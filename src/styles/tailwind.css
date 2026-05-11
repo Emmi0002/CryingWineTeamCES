@@ -4,20 +4,28 @@
 @plugin '@tailwindcss/forms';
 @import "tailwindcss-animated";
 @import "tailwindcss-intersect";
+@plugin 'daisyui';
 
 @font-face {
-  font-family: 'Honk';
-  src: url('/fonts/Honk-Regular-VariableFont_MORF,SHLN.ttf') format('truetype');
+  font-family: "ArchivoBlack";
+  src: url("/fonts/archivoblack/ArchivoBlack-Regular.woff2") format("woff2"), url("/fonts/archivoblack/ArchivoBlack-Regular.woff") format("woff"),
+    url("/fonts/archivoblack/ArchivoBlack-Regular.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Quicksand';
-  src: url('/fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
+  font-family: "Jost";
+  src: url("/fonts/jost/Jost-Regular.woff2") format("woff2"), url("/fonts/jost/Jost-Regular.woff") format("woff"),
+    url("/fonts/jost/Jost-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: 'Domine';
-  src: url('/fonts/Domine-Regular.ttf') format('truetype');
+  font-family: "theballpoint";
+  src: url("/fonts/theballpoint/theballpoint.woff2") format("woff2"), url("/fonts/theballpoint/theballpoint.woff") format("woff"),
+    url("/fonts/theballpoint/theballpoint.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @theme {
@@ -32,9 +40,44 @@
   --color-secondary-600: #F57A00;
 
   /*Typografi */
-  --font-display: 'Honk', monospace;
-  --font-sans: 'Quicksand', sans-serif;
-  --font-serif: 'Domine', serif;
+  --font-Heading: 'ArchivoBlack';
+  --font-Text: 'Jost';
+  --font-Caption: 'theballpoint';
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: false;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: #fffef7;
+  --color-base-200: #fffef7;
+  --color-base-300: #fffef7;
+  --color-base-content: #070707;
+  --color-primary: #001089;
+  --color-primary-content: #ffffff;
+  --color-secondary: #f8ff7e;
+  --color-secondary-content: #070707;
+  --color-accent: #0024ef;
+  --color-accent-content: #ffffff;
+  --color-neutral: #ffffff;
+  --color-neutral-content: #001089;
+  --color-info: #c9cbff;
+  --color-info-content: #070707;
+  --color-success: #00d390;
+  --color-success-content: #004c39;
+  --color-warning: #fcb700;
+  --color-warning-content: #793205;
+  --color-error: #ff627d;
+  --color-error-content: #4d0218;
+  --radius-selector: 0.5rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
 }
 
 @layer base {
