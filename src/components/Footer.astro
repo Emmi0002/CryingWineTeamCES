@@ -3,7 +3,9 @@ import Text from "./Text.astro";
 import Link from "./Link.astro";
 ---
 
-<footer class="relative rounded-none bg-[var(--color-surfacedarker)] text-[var(--color-surfacedarker-content)] flex flex-col gap-[var(--gapweb-m)]">
+<footer
+  class="relative rounded-none bg-[var(--color-surfacedarker)] text-[var(--color-surfacedarker-content)] flex flex-col gap-[var(--gapweb-m)]"
+>
   <div class="grid grid-cols-3 lg:grid-cols-6 w-full">
     <img src="/img/instagram/IgPost1.webp" alt="" class="w-full lg:h-70 h-40" />
     <img src="/img/instagram/IgPost2.webp" alt="" class="w-full lg:h-70 h-40" />
@@ -16,33 +18,66 @@ import Link from "./Link.astro";
     <Text teksttype="caption" color="secondary">Følg med her</Text>
   </div>
 
-  <div class="flex lg:flex-row flex-col gap-[var(--gapmobile-2xl)] lg:gap-0 justify-between lg:pl-[var(--gapweb-xl)] pl-[var(--gapmobile-l)] lg:pr-100 lg:-mt-10 relative z-10 mb-[var(--gapmobile-l)] lg:mb-[var(--gapweb-l)]">
+  <div
+    class="flex lg:flex-row flex-col gap-[var(--gapmobile-2xl)] lg:gap-0 justify-between lg:pl-[var(--gapweb-xl)] pl-[var(--gapmobile-l)] lg:pr-100 lg:-mt-10 relative z-10 mb-[var(--gapmobile-l)] lg:mb-[var(--gapweb-l)]"
+  >
     <div class="flex flex-col lg:gap-[var(--gapweb-xxs)]">
-      <Text teksttype="footnote" weight="bold" color="negative">Vin med posten</Text>
+      <Text teksttype="footnote" weight="bold" color="negative"
+        >Vin med posten</Text
+      >
       <div class="flex flex-col gap-0">
         <div class="join">
           <label class="input validator join-item px-6 py-5">
-            <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
+            <svg
+              class="h-[1em] opacity-50"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <g
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke-width="2.5"
+                fill="none"
+                stroke="currentColor"
+              >
                 <rect width="40" height="20" x="4" y="4" rx="2"></rect>
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
               </g>
             </svg>
-            <input type="email" placeholder="Din Email" class="w-full pl-0 text-black text-lg" required />
+            <input
+              type="email"
+              placeholder="Din Email"
+              class="w-full pl-0 text-black text-lg"
+              required
+            />
           </label>
           <button class="btn btn-neutral join-item px-6 py-5">Tilmeld</button>
         </div>
         <div class="validator-hint hidden">Skriv en gyldig email adresse</div>
-        <div class="h-px w-3/4 bg-[var(--color-surfacedarker-content)] opacity-50 mt-6"></div>
-        <img src="/img/illustrations/Letter-wine.webp" alt="Letter wine" class="w-50 lg:w-55 h-auto -mt-70 lg:-mt-40 lg:-translate-y-16 lg:translate-x-45 -rotate-30 z-10 relative self-end" />
+        <div
+          class="h-px w-3/4 bg-[var(--color-surfacedarker-content)] opacity-50 mt-6"
+        >
+        </div>
+        <img
+          src="/img/illustrations/Letter-wine.webp"
+          alt="Letter wine"
+          class="w-50 lg:w-55 h-auto -mt-70 lg:-mt-40 lg:-translate-y-16 lg:translate-x-45 -rotate-30 z-10 relative self-end"
+        />
       </div>
-      <img src="/img/icon/blob/WhiteBlob.webp" alt="hvid ikon" class="hidden lg:block w-auto h-30 lg:-mt-12 lg:-ml-10 self-start pointer-events-none" />
+      <img
+        src="/img/icon/blob/WhiteBlob.webp"
+        alt="hvid ikon"
+        class="hidden lg:block w-auto h-30 lg:-mt-12 lg:-ml-10 self-start pointer-events-none"
+      />
     </div>
 
-    <div class="grid grid-cols-2 lg:gap-[var(--gapweb-xl)] gap-[var(--gapmobile-xl)] mt-[var(--gapmobile-m)] lg:mt-[var(--gapweb-m)] mb-[var(--gapmobile-m)] lg:mb-[var(--gapweb-l)]">
+    <div
+      class="grid grid-cols-2 lg:gap-[var(--gapweb-xl)] gap-[var(--gapmobile-xl)] mt-[var(--gapmobile-m)] lg:mt-[var(--gapweb-m)] mb-[var(--gapmobile-m)] lg:mb-[var(--gapweb-l)]"
+    >
       <nav class="flex flex-col gap-[var(--gapweb-s)]">
         <Link href="#" variant="textlink" size="default">BETINGELSER</Link>
-        <Link href="#" variant="textlink" size="default">PRIVATLIVSPOLITIK</Link>
+        <Link href="#" variant="textlink" size="default">PRIVATLIVSPOLITIK</Link
+        >
         <Link href="#" variant="textlink" size="default">F.A.Q</Link>
         <Link href="/#" variant="textlink" size="default">RETURNERING</Link>
       </nav>
@@ -53,6 +88,14 @@ import Link from "./Link.astro";
       </nav>
     </div>
   </div>
-  <img src="/img/icon/blob/WhiteBlob.webp" alt="hvid ikon" class="lg:hidden w-30 h-30 ml-4 mt-4 pointer-events-none" />
-  <img src="/img/icon/payment.png" alt="kortmetoder" class="absolute bottom-4 right-4 w-60 h-auto pointer-events-none mt-20" />
+  <img
+    src="/img/icon/blob/WhiteBlob.webp"
+    alt="hvid ikon"
+    class="lg:hidden w-30 h-30 ml-4 mt-4 pointer-events-none"
+  />
+  <img
+    src="/img/icon/payment.png"
+    alt="kortmetoder"
+    class="absolute bottom-4 right-4 w-60 h-auto pointer-events-none mt-20"
+  />
 </footer>

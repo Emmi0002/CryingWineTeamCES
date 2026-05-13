@@ -1,28 +1,186 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Heading from "../components/Heading.astro";
 import Text from "../components/Text.astro";
+import Favorites from "../components/Favorites.astro";
+import Heading from "../components/Heading.astro";
 ---
 
 <MainLayout title="Crying Wine">
-  <main class="container mx-auto p-4">
-    <Heading>Lav noget flot!</Heading>
+  <main>
+    <section class="relative mt-10 md:mb-40">
+      <!-- HERO -->
+      <div class="grid grid-cols-1 lg:grid-cols-5">
+        <!-- BILLEDE -->
+        <div class="lg:col-span-3 relative">
+          <img
+            class="w-full h-full object-cover lg:h-[90%]"
+            src="/img/Hero.webp"
+            alt="Kvinde med en flaske vin"
+          />
 
-    <Text teksttype="caption">Så bliver Anders glad:-)</Text>
-    <Text teksttype="brødtekst">Så bliver Anders glad:-)</Text>
-    <Text teksttype="brødtekst" weight="light">Så bliver Anders glad:-)</Text>
+          <!-- LOGO MOBILE -->
+          <img
+            class="absolute bottom-[-80px] left-0 w-[95%] lg:hidden"
+            src="/img/HeroLogoMobile.webp"
+            alt="Crying Wine logo"
+          />
+        </div>
 
-    <button class="btn btn-neutral border-2 border-accent">Neutral</button>
-    <button class="btn btn-primary">Primary</button>
-    <button class="btn btn-secondary">Secondary</button>
-    <button class="btn btn-accent">Accent</button>
-    <button class="btn btn-info">Info</button>
-    <button class="btn btn-success">Success</button>
-    <button class="btn btn-warning">Warning</button>
-    <button class="btn btn-error">Error</button>
+        <!-- TEKST -->
+        <div class="lg:col-span-2 flex items-center px-8 py-20 lg:py-0">
+          <div class="max-w-[300px]">
+            <!-- LOGO DESKTOP -->
+            <img
+              class="hidden lg:block absolute w-[95%] bottom-[-100px] left-[0%]"
+              src="/img/HeroLogo.webp"
+              alt="Crying Wine logo"
+            />
 
-    <p class="bg-[var(--color-surfacedarker)]">Test</p>
+            <Text>
+              Crying wine er til dig som ønsker en vin <br />baseret på din
+              situation. Trænger du til en iskold hvidvin på terrassen, men ved
+              ikke hvilken? Eller leder du efter en rødvin til jeres grillaften?
+            </Text>
 
-    <p class="text-white bg-[var(--color-surfacedarker)]">Test</p>
+            <Text stylingclasses="pt-2 pb-6">
+              Se hele vores udvalg og vælg sikkert den rigtige vin.
+            </Text>
+
+            <button
+              class="border-2 border-blue-800 text-blue-800 px-10 py-4 font-bold hover:bg-blue-800 hover:text-white transition"
+            >
+              Midlertidig knap!!
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid gap-[var(--gapmobile-2xl)] md:gap-[var(--gapweb-2xl)]">
+      <Favorites />
+
+      <section
+        class="bg-[url('/img/BlobGrid.webp')]
+    bg-cover
+    bg-no-repeat md:flex"
+      >
+        <div class="m-[var(--margin-mobile)] md:m-[var(--margin-web)]">
+          <div class="flex items-center gap-5 mb-10 whitespace-nowrap md:pr-40">
+            <Heading htmlheading="h2" size="medium" color="secondary">
+              Glædestårer på
+            </Heading>
+            <img
+              class="h-40 md:h-60"
+              src="/img/illustrations/WineBottleTall.webp"
+              alt="vinflaske"
+            />
+            <Heading htmlheading="h2" size="medium" color="secondary">
+              flaske
+            </Heading>
+          </div>
+          <div class="max-w-80 lg:max-w-100">
+            <Text color="negative">
+              Crying wine er til dig som ønsker en vin <br />baseret på din
+              situation. Trænger du til en iskold hvidvin på terrassen, men ved
+              ikke hvilken? Eller leder du efter en rødvin til jeres grillaften?
+            </Text>
+
+            <Text stylingclasses="pt-2 pb-6" color="negative">
+              Se hele vores udvalg og vælg sikkert den rigtige vin.
+            </Text>
+            <button
+              class="bg-white border-2 border-blue-800 text-blue-800 px-10 py-4 font-bold hover:bg-blue-800 hover:text-white transition"
+            >
+              Midlertidig knap!!
+            </button>
+          </div>
+        </div>
+        <div>
+          <img
+            class="lg:image-stretch object-cover h-full"
+            src="/img/MoodPhoto.webp"
+            alt="To piger der hygger og drikker vin"
+          />
+        </div>
+      </section>
+
+      <section class="relative overflow-hidden pl-30 md:pl-50">
+        <!-- WRAPPER SOM ROTERER -->
+        <div
+          class="absolute
+      left-[-25px]
+  top-43 md:top-55
+      -translate-y-1/2
+      -rotate-90
+      whitespace-nowrap items-center"
+        >
+          <Heading htmlheading="h2" size="medium"> Madparring </Heading>
+        </div>
+
+        <!-- CAROUSEL -->
+        <div
+          class="carousel carousel-center w-full space-x-[40px] md:space-x-[50px] py-4"
+        >
+          <!-- FISK -->
+          <a href="/flaskentilmaden#fish" class="carousel-item">
+            <img
+              class="w-[250px] md:w-[320px] object-cover"
+              src="/img/categoryimg/FishCategory.webp"
+              alt="Fisk og skaldyr"
+            />
+          </a>
+
+          <!-- KØD -->
+          <a href="/flaskentilmaden#meat" class="carousel-item">
+            <img
+              class="w-[250px] md:w-[320px] object-cover"
+              src="/img/categoryimg/MeatCategory.webp"
+              alt="Kød"
+            />
+          </a>
+
+          <!-- PASTA -->
+          <a href="/flaskentilmaden#pasta" class="carousel-item">
+            <img
+              class="w-[250px] md:w-[320px] object-cover"
+              src="/img/categoryimg/PastaCategory.webp"
+              alt="Pasta og Risotto"
+            />
+          </a>
+
+          <!-- PIZZA -->
+          <a href="/flaskentilmaden#pizza" class="carousel-item">
+            <img
+              class="w-[250px] md:w-[320px] object-cover"
+              src="/img/categoryimg/PizzaCategory.webp"
+              alt="Pizza"
+            />
+          </a>
+
+          <!-- TAPAS -->
+          <a href="/flaskentilmaden#tapas" class="carousel-item">
+            <img
+              class="w-[250px] md:w-[320px] object-cover"
+              src="/img/categoryimg/TapasCategory.webp"
+              alt="Tapas"
+            />
+          </a>
+        </div>
+
+        <div
+          class="flex flex-col items-end mr-[var(--margin-mobile)] md:mr-[var(--margin-web)]"
+        >
+          <Text teksttype="caption" stylingclasses="text-right" color="accent">
+            Se mere
+          </Text>
+
+          <img
+            class="w-24 -mt-10 -mr-10"
+            src="/img/illustrations/arrowFoodparring.webp"
+            alt="Pil"
+          />
+        </div>
+      </section>
+    </div>
   </main>
 </MainLayout>
