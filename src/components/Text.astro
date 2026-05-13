@@ -3,12 +3,7 @@ import { body, label, menu } from "motion/react-client";
 
 // Henter parametrene fra Astro.props
 
-const {
-  teksttype = "body",
-  stylingclasses = "",
-  weight = "regular",
-  color = "body",
-} = Astro.props;
+const { teksttype = "body", stylingclasses = "", weight = "regular", color = "body" } = Astro.props;
 
 //Definer den styling (Tailwind classes), der gør sig gældende for de forskellige størrelser.
 const sizeClasses = {
@@ -16,7 +11,7 @@ const sizeClasses = {
   body: "text-[12px] md:text-[13px] lg:text-[16px]",
   subtitle: "text-[11px] md:text-[11px] lg:text-[13px]",
   caption: "text-[40px] md:text-[45px] lg:text-[70px] font-Caption ;",
-  footnote: "text-[12px] md:text-[12px] lg:text-[12px] uppercase",
+  footnote: "text-[12px] md:text-[12px] lg:text-[14px] uppercase",
   label: "text-[12px] md:text-[13px] lg:text-[14px] uppercase",
 };
 
@@ -35,13 +30,6 @@ const colorClasses = {
 };
 ---
 
-<p
-  class:list={[
-    sizeClasses[teksttype],
-    typeClasses[weight],
-    colorClasses[color],
-    stylingclasses,
-  ]}
->
+<p class:list={[sizeClasses[teksttype], typeClasses[weight], colorClasses[color], stylingclasses]}>
   <slot />
 </p>
