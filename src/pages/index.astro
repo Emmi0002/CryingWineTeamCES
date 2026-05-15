@@ -37,13 +37,13 @@ import Heading from "../components/Heading.astro";
             />
 
             <Text>
-              Crying wine er til dig som ønsker en vin <br />baseret på din
-              situation. Trænger du til en iskold hvidvin på terrassen, men ved
-              ikke hvilken? Eller leder du efter en rødvin til jeres grillaften?
+              Crying Wine er til dig som ønsker en vin baseret på din situation.
+              Trænger du til en iskold hvidvin på terrassen, men ved ikke
+              hvilken? Eller leder du efter en rødvin til grillaftenen?
             </Text>
 
             <Text stylingclasses="pt-2 pb-6">
-              Se hele vores udvalg og vælg sikkert den rigtige vin.
+              Se hele vores udvalg og find en vin der passer til dit øjeblik.
             </Text>
 
             <button
@@ -56,6 +56,7 @@ import Heading from "../components/Heading.astro";
       </div>
     </section>
 
+    <!-- GLÆDESTÅRER PÅ MOBILE-TABLET -->
     <div class="grid gap-[var(--gapmobile-2xl)] md:gap-[var(--gapweb-2xl)]">
       <Favorites />
 
@@ -64,7 +65,9 @@ import Heading from "../components/Heading.astro";
     bg-cover
     bg-no-repeat md:flex"
       >
-        <div class="m-[var(--margin-mobile)] md:m-[var(--margin-web)]">
+        <div
+          class="2xl:hidden m-[var(--margin-mobile)] md:m-[var(--margin-web)]"
+        >
           <div class="flex items-center gap-5 mb-10 whitespace-nowrap md:pr-40">
             <Heading htmlheading="h2" size="medium" color="secondary">
               Glædestårer på
@@ -78,15 +81,15 @@ import Heading from "../components/Heading.astro";
               flaske
             </Heading>
           </div>
-          <div class="max-w-80 lg:max-w-100">
+          <div class="max-w-80 lg:max-w-95">
             <Text color="negative">
-              Crying wine er til dig som ønsker en vin <br />baseret på din
-              situation. Trænger du til en iskold hvidvin på terrassen, men ved
-              ikke hvilken? Eller leder du efter en rødvin til jeres grillaften?
+              Crying Wine er skabt til lange middage, spontane aftener og
+              øjeblikke, der ender bedre end planlagt. Vi tror på vin uden fine
+              fornemmelser <br /> - bare flasker, der passer til stemningen.
             </Text>
 
             <Text stylingclasses="pt-2 pb-6" color="negative">
-              Se hele vores udvalg og vælg sikkert den rigtige vin.
+              Glædestårer på flaske, til alt det der er værd at skåle for.
             </Text>
             <button
               class="bg-white border-2 border-blue-800 text-blue-800 px-10 py-4 font-bold hover:bg-blue-800 hover:text-white transition"
@@ -95,6 +98,62 @@ import Heading from "../components/Heading.astro";
             </button>
           </div>
         </div>
+
+        <!-- GLÆDESTÅRER PÅ DESKTOP -->
+        <div
+          class="hidden 2xl:block m-[var(--margin-mobile)] md:m-[var(--margin-web)]"
+        >
+          <div class="grid grid-cols-4 gap-[var(--gapweb-xl)]">
+            <!-- Kolonne 1: tekst + knap -->
+            <div class="col-span-2">
+              <Heading
+                stylingclasses="whitespace-nowrap mb-10"
+                htmlheading="h2"
+                size="medium"
+                color="secondary"
+              >
+                Glædestårer på
+              </Heading>
+
+              <Text color="negative">
+                Crying Wine er skabt til lange middage, spontane aftener og
+                øjeblikke, der ender bedre end planlagt.
+              </Text>
+
+              <Text color="negative">
+                Vi tror på vin uden fine fornemmelser <br />
+                - bare flasker, der passer til stemningen.
+              </Text>
+
+              <Text stylingclasses="pt-5 pb-6" color="negative">
+                Glædestårer på flaske, <br />til alt det der er værd at skåle
+                for.
+              </Text>
+
+              <button
+                class="bg-white border-2 border-blue-800 text-blue-800 px-10 py-4 font-bold hover:bg-blue-800 hover:text-white transition"
+              >
+                Midlertidig knap!!
+              </button>
+            </div>
+
+            <!-- Kolonne 2: flasken (billede) -->
+            <div>
+              <img
+                src="/img/illustrations/WineBottleTall.webp"
+                alt="vinflaske"
+              />
+            </div>
+
+            <!-- Kolonne 3: heading -->
+            <div class="-ml-20">
+              <Heading htmlheading="h2" size="medium" color="secondary">
+                flaske
+              </Heading>
+            </div>
+          </div>
+        </div>
+
         <div>
           <img
             class="lg:image-stretch object-cover h-full"
@@ -167,19 +226,21 @@ import Heading from "../components/Heading.astro";
           </a>
         </div>
 
-        <div
-          class="flex flex-col items-end mr-[var(--margin-mobile)] md:mr-[var(--margin-web)]"
+        <!-- Se mere link/knap -->
+        <a
+          href="/flaskentilmaden"
+          class="flex flex-col items-end mr-11 md:mr-[var(--margin-web)]"
         >
           <Text teksttype="caption" stylingclasses="text-right" color="accent">
             Se mere
           </Text>
 
           <img
-            class="w-24 -mt-10 -mr-10"
+            class="w-24 -mt-8 -mr-12 md:-mr-12 md:w-32 md:-mt-12"
             src="/img/illustrations/arrowFoodparring.webp"
             alt="Pil"
           />
-        </div>
+        </a>
       </section>
     </div>
   </main>
