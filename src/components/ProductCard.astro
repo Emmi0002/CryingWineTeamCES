@@ -1,0 +1,74 @@
+---
+import CardButton from "./CardButton.astro";
+import Text from "./Text.astro";
+
+// Henter parametrene fra Astro.props
+const { imageSrc = "", imageAlt = "", title = "Card Title", pris = "", buttonText = "Buy Now", showBadge = false, badgeText = "Primary", badgeColor = "badge-primary", quantity = 1 } = Astro.props;
+---
+
+<!-- xdata bruges til at styre visningen af overlayet når man lægger i kurv -->
+<div
+  class="card w-fit rounded-none"
+  x-data="{
+    open: false,
+    show() {
+      this.open = true
+      setTimeout(() => this.open = false, 5000)
+      // Dispatch cartAdded event til header
+      window.dispatchEvent(new CustomEvent('cartAdded', { 
+        detail: { quantity: parseInt('{quantity}') || 1 } 
+      }))
+    }
+  }"
+>
+  <div class="card w-fit rounded-none overflow-hidden">
+    <figure class="relative">
+      <img src={imageSrc} alt={imageAlt} class="h-max-176 w-max-167 lg:h-max-306 lg:w-max-311 object-cover rounded-none" />
+    </figure>
+    <div class="my-(--gapweb-xxs)">
+      <span class="badge bg-info rounded-radius-selector"><Text teksttype="footnote" weight="light">Badge1</Text></span>
+      <span class="badge bg-info rounded-radius-selector"><Text teksttype="footnote" weight="light">Badge2</Text></span>
+      <span class="badge bg-info rounded-radius-selector"><Text teksttype="footnote" weight="light">Badge3</Text></span>
+    </div>
+    <img src="/img/illustrations/VectorLine.png" alt="Seperation line" class="w-[84px] lg:w-[118px] my-(--gapweb-xxs)" />
+
+    <div class="my-(--gapweb-xxs)">
+      <Text teksttype="headline" weight="bold">Productname</Text>
+      <Text teksttype="body" weight="light">Price</Text>
+    </div>
+
+    <!-- <div class="card-actions justify-end">
+      <CardButton variant="primary">{buttonText}</CardButton>
+    </div> -->
+
+    <!-- CART OVERLAY -->
+    <div class="fixed top-25 -right-12 md:-right-15 z-50">
+      <div
+        x-show="open"
+        x-transition:enter="transition transform ease-out duration-1500"
+        x-transition:enter-start="translate-x-full opacity-0"
+        x-transition:enter-end="translate-x-0 opacity-100"
+        x-transition:leave="transition transform ease-in duration-2000"
+        x-transition:leave-start="translate-x-0 opacity-100"
+        x-transition:leave-end="translate-x-full opacity-0 "
+        class="modal-box flex gap-10 max-w-xl outline-3 outline-primary"
+      >
+        <!-- Billede -->
+        <div class="shrink-0">
+          <img src={imageSrc} alt={imageAlt} class="w-20 md:w-32 h-auto" />
+        </div>
+
+        <!-- Tekst -->
+        <div class="flex flex-col items-end text-right pr-8 w-full">
+          <Text teksttype="headline" weight="bold"> Tilføjet til kurv </Text>
+
+          <div class="h-2 w-35 md:w-30 bg-secondary rounded-full mt-4 mb-4"></div>
+
+          <Text teksttype="body">{title}</Text>
+          <Text teksttype="body">{pris}</Text>
+          <Text teksttype="body">Antal: {quantity}</Text>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
