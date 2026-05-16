@@ -6,9 +6,9 @@ import Link from "./Link.astro";
 
 <article class="flex flex-col">
   <img src="/img/illustrations/longvectorline.png" alt="blå streg" class="mb-[var(--gapmobile-m)] lg:mb-[var(--gapweb-m)]" />
-  <div class="grid grid-cols-2 items-center gap-[var(--gapmobile-m)] lg:gap-[var(--gapweb-m)] mb-[var(--gapmobile-xs)] lg:mb-[var(--gapweb-xs)]">
-    <img src="/img/smagskasse.webp" alt="Smagskasse" class="h-[80%] w-auto justify-self-center" />
-    <div class="flex h-full flex-col justify-center">
+  <div class="flex flex-col lg:grid lg:grid-cols-2 items-center gap-[var(--gapmobile-m)] lg:gap-[var(--gapweb-m)] mb-[var(--gapmobile-xs)] lg:mb-[var(--gapweb-xs)]">
+    <img src="/img/smagskasse.webp" alt="Smagskasse" class="order-2 lg:order-1 h-[80%] w-auto justify-self-center self-center" />
+    <div class="order-1 lg:order-2 flex h-full flex-col justify-center">
       <div class="flex flex-col gap-[var(--gapmobile-s)] lg:gap-[var(--gapweb-s)]">
         <Heading size="medium" color="primary">Smagskasser</Heading>
         <Text teksttype="headline" color="accent" weight="bold">I tvivl om hvilken vin der passer til din middag? <br /> og hvilken ret jeg skal servere?</Text>
