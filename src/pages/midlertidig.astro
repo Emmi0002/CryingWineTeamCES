@@ -1,0 +1,355 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Text from "../components/Text.astro";
+import Heading from "../components/Heading.astro";
+import Favorites from "../components/Favorites.astro";
+---
+
+<MainLayout>
+  <main
+    class="mt-30 md:mt-50 flex flex-col gap-[var(--gapmobile-xl)] md:gap-[var(--gapweb-xl)]"
+  >
+    <section
+      class="md:grid md:grid-cols-2 md:gap-[var(--gapweb-l)] md:mx-[var(--margin-web)] items-center"
+    >
+      <!-- MOBIL VERSION -->
+      <div class="block md:hidden">
+        <!-- Titel -->
+        <div class="mb-[var(--gapmobile-s)] mx-[var(--margin-mobile)]">
+          <Heading htmlheading="h1" size="large" color="primary">
+            Fleur Rebelle
+          </Heading>
+        </div>
+
+        <!-- Standard DaisyUI carousel -->
+        <div
+          class="carousel w-full space-x-[var(--gapmobile-m)] ml-[var(--margin-mobile)]"
+        >
+          <!-- Billede 1 -->
+          <div class="carousel-item">
+            <img
+              class="aspect-square w-[300px] object-cover"
+              src="/img/categoryimg/MeatCategory.webp"
+              alt="Rosé vin billede 1"
+            />
+          </div>
+
+          <!-- Billede 2 -->
+          <div class="carousel-item">
+            <img
+              class="aspect-square w-[300px] object-cover"
+              src="/img/categoryimg/PastaCategory.webp"
+              alt="Rosé vin billede 2"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- DESKTOP VERSION -->
+      <div
+        x-data="{ selected: '/img/categoryimg/MeatCategory.webp' }"
+        class="hidden md:flex gap-[var(--gapweb-s)] justify-self-end"
+      >
+        <!-- Thumbnail billeder -->
+        <div class="flex flex-col gap-[var(--gapweb-m)]">
+          <!-- Thumbnail 1 -->
+          <button
+            type="button"
+            @click="selected = '/img/categoryimg/MeatCategory.webp'"
+          >
+            <img
+              src="/img/categoryimg/MeatCategory.webp"
+              alt="img1"
+              class="w-20 h-20 object-cover"
+            />
+          </button>
+
+          <!-- Thumbnail 2 -->
+          <button
+            type="button"
+            @click="selected = '/img/categoryimg/PastaCategory.webp'"
+          >
+            <img
+              src="/img/categoryimg/PastaCategory.webp"
+              alt="img2"
+              class="w-20 h-20 object-cover"
+            />
+          </button>
+        </div>
+
+        <!-- Stort hovedbillede -->
+        <div>
+          <img
+            :src="selected"
+            alt="Main Image"
+            class="w-[500px] max-w-[400px] h-auto object-contain"
+          />
+        </div>
+      </div>
+
+      <!-- PRODUKT INDHOLD -->
+      <div
+        class="flex flex-col gap-[var(--gapmobile-s)] md:gap-[var(--gapweb-s)] mx-[var(--margin-mobile)]"
+      >
+        <!-- Desktop titel -->
+        <div
+          class="md:flex flex-col gap-[var(--gapmobile-xxs)] md:gap-[var(--gapweb-xxs)]"
+        >
+          <Heading
+            stylingclasses="hidden md:block"
+            htmlheading="h1"
+            size="large"
+            color="primary"
+          >
+            Fleur Rebelle
+          </Heading>
+
+          <Text
+            teksttype="headline"
+            weight="light"
+            color="primary"
+            stylingclasses="uppercase"
+          >
+            Rosé
+          </Text>
+
+          <Text
+            teksttype="headline"
+            weight="light"
+            color="primary"
+            stylingclasses="uppercase"
+          >
+            MANGLER BADGES HER
+          </Text>
+        </div>
+
+        <!-- Dekorativ linje -->
+        <img
+          class="w-1/2"
+          src="/img/illustrations/SingleViewLine.webp"
+          alt="Line"
+        />
+
+        <!-- Produkt beskrivelse -->
+        <Text stylingclasses="md:mr-40">
+          Fleur Rebelle er en økologisk rosé med masser af friskhed, røde bær og
+          et lille strejf af blomster, der gør den både livlig og elegant.
+        </Text>
+
+        <!-- Pris -->
+        <Text
+          teksttype="headline"
+          weight="bold"
+          color="primary"
+          stylingclasses="uppercase"
+        >
+          119 DKK
+        </Text>
+
+        <!-- Antal vælger -->
+        <div
+          x-data="{ qty: 0 }"
+          class="flex items-center gap-[var(--gapmobile-s)] md:gap-[var(--gapweb-s)]"
+        >
+          <!-- Minus knap -->
+          <button
+            @click="if (qty > 0) qty--"
+            :class="{'opacity-50': qty <= 0}"
+            :disabled="qty <= 0"
+            type="button"
+            class="w-12 h-12 rounded-full border-2 border-[var(--color-primary)] text-[var(--color-primary)] bg-[var(--color-neutral)] flex items-center justify-center text-2xl"
+          >
+            −
+          </button>
+
+          <!-- Antal -->
+          <div
+            id="quantity"
+            class="min-w-[36px] text-center text-lg"
+            x-text="qty"
+          >
+            0
+          </div>
+
+          <!-- Plus knap -->
+          <button
+            @click="qty++"
+            type="button"
+            class="w-12 h-12 rounded-full border-2 border-[var(--color-primary)] text-[var(--color-primary)] bg-[var(--color-neutral)] flex items-center justify-center text-2xl"
+          >
+            +
+          </button>
+
+          <!-- Købsknap -->
+          <button
+            class="ml-6 bg-[var(--color-primary)] text-white px-6 py-3 rounded"
+          >
+            Midlertidig knap
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIN INFO SEKTION MOBIL -->
+    <section
+      class="md:hidden bg-[url('/img/WineSectionMobile.webp')]
+  bg-contain
+    bg-no-repeat"
+    >
+      <div class="text-center">
+        <Heading htmlheading="h3" size="small" color="secondary">
+          DRIKKES BEDST TIL
+        </Heading>
+
+        <div
+          class="mt-10 grid grid-cols-2 gap-[var(--gapmobile-l)] justify-items-center items-center"
+        >
+          <div
+            class="flex flex-col items-center gap-[var(--gapmobile-xxs)] text-center"
+          >
+            <img
+              src="/img/categoryimg/PastaCategory.webp"
+              alt="Pasta"
+              class="h-40 w-40 object-cover"
+            />
+            <Text teksttype="headline" weight="bold" color="negative"
+              >Pasta</Text
+            >
+          </div>
+
+          <div
+            class="flex flex-col items-center gap-[var(--gapmobile-xxs)] text-center"
+          >
+            <img
+              src="/img/categoryimg/FishCategory.webp"
+              alt="Fisk"
+              class="h-40 w-40 object-cover"
+            />
+            <Text teksttype="headline" weight="bold" color="negative"
+              >Fisk og skaldyr</Text
+            >
+          </div>
+
+          <div
+            class="flex flex-col items-center gap-[var(--gapmobile-xxs)] text-center"
+          >
+            <img
+              src="/img/categoryimg/PizzaCategory.webp"
+              alt="Pizza"
+              class="h-40 w-40 object-cover"
+            />
+            <Text teksttype="headline" weight="bold" color="negative"
+              >Pizza</Text
+            >
+          </div>
+
+          <div
+            class="flex flex-col items-center gap-[var(--gapmobile-xxs)] text-center"
+          >
+            <img
+              src="/img/categoryimg/TapasCategory.webp"
+              alt="Tapas"
+              class="h-40 w-40 object-cover"
+            />
+            <Text teksttype="headline" weight="bold" color="negative"
+              >Tapas</Text
+            >
+          </div>
+        </div>
+      </div>
+
+      <img
+        class="rotate-90"
+        src="/img/illustrations/SingleViewLineWhite.webp"
+        alt="Line"
+      />
+
+      <img
+        class="w-[500px] h-[500px] object-cover"
+        src="/img/categoryimg/MeatCategory.webp"
+        alt="Wine"
+      />
+    </section>
+
+    <!-- VIN INFO SEKTION DESKTOP -->
+    <section
+      class="hidden bg-[url('/img/WineSection.webp')]
+  bg-contain
+    bg-no-repeat md:flex p-10 gap-[var(--gapmobile-2xl)] md:gap-[var(--gapweb-2xl)] items-center justify-center"
+    >
+      <div class="text-center">
+        <Heading htmlheading="h3" size="small" color="secondary">
+          DRIKKES BEDST TIL
+        </Heading>
+
+        <div
+          class="mt-10 grid grid-cols-1 gap-[var(--gapmobile-l)] md:grid-cols-2 md:gap-[var(--gapweb-l)] items-center justify-items-center"
+        >
+          <div
+            class="flex flex-col items-center gap-[var(--gapmobile-xxs)] text-center"
+          >
+            <img
+              src="/img/categoryimg/PastaCategory.webp"
+              alt="Pasta"
+              class="md:h-52 md:w-52 object-cover"
+            />
+            <Text teksttype="headline" weight="bold" color="negative"
+              >Pasta</Text
+            >
+          </div>
+
+          <div
+            class="flex flex-col items-center gap-[var(--gapweb-xxs)] text-center"
+          >
+            <img
+              src="/img/categoryimg/FishCategory.webp"
+              alt="Fisk"
+              class="md:h-52 md:w-52 object-cover"
+            />
+            <Text teksttype="headline" weight="bold" color="negative"
+              >Fisk og skaldyr</Text
+            >
+          </div>
+
+          <div
+            class="flex flex-col items-center gap-[var(--gapweb-xxs)] text-center"
+          >
+            <img
+              src="/img/categoryimg/PizzaCategory.webp"
+              alt="Pizza"
+              class="md:h-52 md:w-52 object-cover"
+            />
+            <Text teksttype="headline" weight="bold" color="negative"
+              >Pizza</Text
+            >
+          </div>
+
+          <div
+            class="flex flex-col items-center gap-[var(--gapweb-xxs)] text-center"
+          >
+            <img
+              src="/img/categoryimg/TapasCategory.webp"
+              alt="Tapas"
+              class="md:h-52 md:w-52 object-cover"
+            />
+            <Text teksttype="headline" weight="bold" color="negative"
+              >Tapas</Text
+            >
+          </div>
+        </div>
+      </div>
+
+      <img src="/img/illustrations/SingleViewLineWhite.webp" alt="Line" />
+
+      <img
+        class="w-[500px] h-[500px] object-cover"
+        src="/img/categoryimg/MeatCategory.webp"
+        alt="Wine"
+      />
+    </section>
+
+    <div class="mb-[var(--gapmobile-xl)]">
+      <Favorites />
+    </div>
+  </main>
+</MainLayout>
