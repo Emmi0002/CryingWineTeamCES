@@ -2,11 +2,29 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Heading from "../components/Heading.astro";
 import Text from "../components/Text.astro";
+import ContactInfo from "../components/ContactInfo.astro";
 ---
 
 <MainLayout title="Bag om crying">
   <main class="container mx-auto p-4">
     <Heading htmlheading="h1">Lav noget flot!</Heading>
     <Text teksttype="brødtekst">Så bliver Anders glad:-)</Text>
+    <!-- kontaktoplysninger -->
+    <section>
+      <div class="lg:grid grid-cols-2 items-stretch gap-6">
+        <div>
+          <Heading htmlheading="h2" size="medium">Kontaktinformationer</Heading>
+
+          <div class="grid grid-cols-3">
+            <ContactInfo label="Telefon" tekst="+45 12345678" link="tel:+4512345678" />
+            <ContactInfo label="Email" tekst="Hi@crying.wine" link="mailto:Hi@crying.wine" />
+            <ContactInfo label="Instagram" tekst="Cryingwinecopenhagen" link="https://www.instagram.com/cryingwinecopenhagen" />
+          </div>
+        </div>
+        <div class="relative hidden w-full overflow-hidden pt-[50%] lg:block">
+          <img src="/img/instagram/IgPost2.webp" alt="billede stemning" class="absolute inset-0 h-full w-full object-cover object-center" />
+        </div>
+      </div>
+    </section>
   </main>
 </MainLayout>
