@@ -3,17 +3,18 @@ import CardButton from "./CardButton.astro";
 import Text from "./Text.astro";
 
 // Henter parametrene fra Astro.props
-const { imageSrc = "", imageAlt = "", title = "Card Title", pris = "", buttonText = "Buy Now", showBadge = false, badgeText = "Primary", badgeColor = "badge-primary", quantity = 1 } = Astro.props;
+const { imageSrc = "", imageAlt = "", imageSrc2 = "", imageAlt2 = "", title = "Card Title", pris = "", buttonText = "Buy Now", quantity = 1 } = Astro.props;
 ---
 
 <!-- xdata bruges til at styre visningen af overlayet når man lægger i kurv -->
 <div
-  class="card w-fit rounded-none"
+  class="card w-full rounded-none overflow-x-hidden"
   x-data="{
+    hovering: false,
     open: false,
     show() {
       this.open = true
-      setTimeout(() => this.open = false, 5000)
+      setTimeout(() => this.open = false, 3000)
       // Dispatch cartAdded event til header
       window.dispatchEvent(new CustomEvent('cartAdded', { 
         detail: { quantity: parseInt('{quantity}') || 1 } 
@@ -21,53 +22,75 @@ const { imageSrc = "", imageAlt = "", title = "Card Title", pris = "", buttonTex
     }
   }"
 >
-  <div class="card w-fit rounded-none overflow-hidden">
-    <figure class="relative">
-      <img src={imageSrc} alt={imageAlt} class="h-max-176 w-max-167 lg:h-max-306 lg:w-max-311 object-cover rounded-none" />
-    </figure>
-    <div class="my-(--gapweb-xxs)">
+  <div class="card w-full rounded-none overflow-hidden">
+    <div class="relative w-full h-44 sm:h-56 lg:h-72 overflow-hidden" @mouseenter="hovering = true" @mouseleave="hovering = false">
+      <!-- Kategory tekst -->
+      <Text teksttype="headline" weight="bold" color="negative" stylingclasses="z-10 absolute top-13 right-3 lg:top-18 lg:right-5 rotate-90 origin-right">Kateogri</Text>
+      <!-- Image 1 (top layer, fades on hover) -->
+      <figure class="absolute inset-0">
+        <img src={imageSrc} alt={imageAlt} class="w-full h-full object-cover rounded-none transition-opacity duration-300" x-bind:class="hovering ? 'opacity-0' : 'opacity-100'" />
+      </figure>
+
+      <!-- Image 2 (bottom layer, shows on hover) -->
+      <figure class="absolute inset-0">
+        <img
+          src={imageSrc2 || imageSrc}
+          alt={imageAlt2 || imageAlt}
+          class="w-full h-full object-cover rounded-none transition-opacity duration-300"
+          x-bind:class="hovering ? 'opacity-100' : 'opacity-0'"
+        />
+      </figure>
+
+      <!-- Button on top of image 2 -->
+      <div
+        class="hidden lg:flex absolute inset-0 items-center justify-center px-4 transform transition-all duration-300"
+        x-bind:class="hovering ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'"
+      >
+        <CardButton variant="primary" size="wide">{buttonText}</CardButton>
+      </div>
+    </div>
+    <div class="my-[var(--gapweb-xxs)]">
       <span class="badge bg-info rounded-radius-selector"><Text teksttype="footnote" weight="light">Badge1</Text></span>
       <span class="badge bg-info rounded-radius-selector"><Text teksttype="footnote" weight="light">Badge2</Text></span>
       <span class="badge bg-info rounded-radius-selector"><Text teksttype="footnote" weight="light">Badge3</Text></span>
     </div>
-    <img src="/img/illustrations/VectorLine.png" alt="Seperation line" class="w-[84px] lg:w-[118px] my-(--gapweb-xxs)" />
+    <img src="/img/illustrations/VectorLine.png" alt="Seperation line" class="w-[84px] lg:w-[118px] my-[var(--gapweb-xxs)]" />
 
-    <div class="my-(--gapweb-xxs)">
+    <div class="my-[var(--gapweb-xxs)]">
       <Text teksttype="headline" weight="bold">Productname</Text>
       <Text teksttype="body" weight="light">Price</Text>
+      <div class="lg:hidden my-[var(--gapweb-xs)] w-full">
+        <CardButton variant="primary" size="wide">{buttonText}</CardButton>
+      </div>
     </div>
+  </div>
 
-    <!-- <div class="card-actions justify-end">
-      <CardButton variant="primary">{buttonText}</CardButton>
-    </div> -->
+  <!-- CART OVERLAY -->
+  <div class="fixed top-25 right-4 z-50">
+    <div
+      x-show="open"
+      x-transition:enter="transition transform ease-out duration-500"
+      x-transition:enter-start="translate-x-full opacity-0"
+      x-transition:enter-end="translate-x-0 opacity-100"
+      x-transition:leave="transition transform ease-in duration-500"
+      x-transition:leave-start="translate-x-0 opacity-100"
+      x-transition:leave-end="translate-x-full opacity-0"
+      class="bg-base-100 flex gap-6 w-screen max-w-sm p-6 outline-3 outline-primary shadow-xl overflow-hidden"
+    >
+      <!-- Billede -->
+      <div class="shrink-0">
+        <img src={imageSrc} alt={imageAlt} class="w-20 md:w-32 h-auto" />
+      </div>
 
-    <!-- CART OVERLAY -->
-    <div class="fixed top-25 -right-12 md:-right-15 z-50">
-      <div
-        x-show="open"
-        x-transition:enter="transition transform ease-out duration-1500"
-        x-transition:enter-start="translate-x-full opacity-0"
-        x-transition:enter-end="translate-x-0 opacity-100"
-        x-transition:leave="transition transform ease-in duration-2000"
-        x-transition:leave-start="translate-x-0 opacity-100"
-        x-transition:leave-end="translate-x-full opacity-0 "
-        class="modal-box flex gap-10 max-w-xl outline-3 outline-primary"
-      >
-        <!-- Billede -->
-        <div class="shrink-0">
-          <img src={imageSrc} alt={imageAlt} class="w-20 md:w-32 h-auto" />
-        </div>
+      <!-- Tekst -->
+      <div class="flex flex-col pr-8 w-full my-(var(--gapweb-xs))">
+        <Text teksttype="headline" weight="bold" color="primary"> Puttet i kassen </Text>
 
-        <!-- Tekst -->
-        <div class="flex flex-col items-end text-right pr-8 w-full">
-          <Text teksttype="headline" weight="bold"> Tilføjet til kurv </Text>
+        <img src="/img/illustrations/VectorLine.png" alt="Seperation line" class="w-[84px] lg:w-[118px] my-(--gapweb-xxs)" />
 
-          <div class="h-2 w-35 md:w-30 bg-secondary rounded-full mt-4 mb-4"></div>
-
-          <Text teksttype="body">{title}</Text>
-          <Text teksttype="body">{pris}</Text>
-          <Text teksttype="body">Antal: {quantity}</Text>
-        </div>
+        <Text teksttype="headline" weight="regular" color="body"> Productname </Text>
+        <Text teksttype="body" weight="regular" color="primary"> Price </Text>
+        <Text teksttype="body">Antal: {quantity}</Text>
       </div>
     </div>
   </div>
