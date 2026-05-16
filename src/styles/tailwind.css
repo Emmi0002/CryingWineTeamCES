@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @plugin '@tailwindcss/typography';
 @plugin '@tailwindcss/forms';
@@ -8,13 +8,17 @@
 
 @font-face {
   font-family: "ArchivoBlack";
-  src: url("/fonts/archivoblack/ArchivoBlack-Regular.woff2") format("woff2"), url("/fonts/archivoblack/ArchivoBlack-Regular.woff") format("woff"),
+  src:
+    url("/fonts/archivoblack/ArchivoBlack-Regular.woff2") format("woff2"),
+    url("/fonts/archivoblack/ArchivoBlack-Regular.woff") format("woff"),
     url("/fonts/archivoblack/ArchivoBlack-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Jost";
-  src: url("/fonts/jost/Jost-Regular.woff2") format("woff2"), url("/fonts/jost/Jost-Regular.woff") format("woff"),
+  src:
+    url("/fonts/jost/Jost-Regular.woff2") format("woff2"),
+    url("/fonts/jost/Jost-Regular.woff") format("woff"),
     url("/fonts/jost/Jost-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
@@ -22,7 +26,9 @@
 
 @font-face {
   font-family: "theballpoint";
-  src: url("/fonts/theballpoint/theballpoint.woff2") format("woff2"), url("/fonts/theballpoint/theballpoint.woff") format("woff"),
+  src:
+    url("/fonts/theballpoint/theballpoint.woff2") format("woff2"),
+    url("/fonts/theballpoint/theballpoint.woff") format("woff"),
     url("/fonts/theballpoint/theballpoint.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
@@ -30,28 +36,27 @@
 
 :root {
   /* Gap */
-    /* Gap mobile */
-    --gapmobile-xxs: 4px;
-    --gapmobile-xs: 8px;
-    --gapmobile-s: 16px;
-    --gapmobile-m: 24px;
-    --gapmobile-l: 40px;
-    --gapmobile-xl: 60px;
-    --gapmobile-2xl: 90px;
-    --gapmobile-3xl: 110px;
-    --gapmobile-4xl: 120px;
-  
-    /* Gap web*/
-    --gapweb-xxs: 6px;
-    --gapweb-xs: 12px;
-    --gapweb-s: 20px;
-    --gapweb-m: 32px;
-    --gapweb-l: 50px;
-    --gapweb-xl: 80px;
-    --gapweb-2xl: 110px;
-    --gapweb-3xl: 130px;
-    --gapweb-4xl: 150px;
+  /* Gap mobile */
+  --gapmobile-xxs: 4px;
+  --gapmobile-xs: 8px;
+  --gapmobile-s: 16px;
+  --gapmobile-m: 24px;
+  --gapmobile-l: 40px;
+  --gapmobile-xl: 60px;
+  --gapmobile-2xl: 90px;
+  --gapmobile-3xl: 110px;
+  --gapmobile-4xl: 120px;
 
+  /* Gap web*/
+  --gapweb-xxs: 6px;
+  --gapweb-xs: 12px;
+  --gapweb-s: 20px;
+  --gapweb-m: 32px;
+  --gapweb-l: 50px;
+  --gapweb-xl: 80px;
+  --gapweb-2xl: 110px;
+  --gapweb-3xl: 130px;
+  --gapweb-4xl: 150px;
 
   /* radius */
   --radius-xs: 4px;
@@ -66,21 +71,18 @@
   --border-s: 2px;
   --border-m: 3px;
   --border-l: 4px;
-  
 
   /* Margin */
   --margin-mobile: 20px;
   --margin-tablet: 40px;
   --margin-web: 100px;
-
-  
 }
 
 @theme {
   /*Typografi */
-  --font-Heading: 'ArchivoBlack';
-  --font-Text: 'Jost';
-  --font-Caption: 'theballpoint';
+  --font-Heading: "ArchivoBlack";
+  --font-Text: "Jost";
+  --font-Caption: "theballpoint";
 }
 
 @plugin "daisyui/theme" {
@@ -94,7 +96,7 @@
   --color-base-200: #fffef7;
   --color-base-300: #fffef7;
 
- /* Sort tekst */
+  /* Sort tekst */
   --color-base-content: #070707;
 
   /* Mørkeblå + hvid tekst */
@@ -145,13 +147,10 @@
 }
 
 @layer base {
-
 }
 
-@layer components{
-
+@layer components {
 }
 
-@layer utilities{
-  
+@layer utilities {
 }

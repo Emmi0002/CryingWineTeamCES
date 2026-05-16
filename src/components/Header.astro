@@ -57,18 +57,12 @@ import Heading from "../components/Heading.astro";
       <!-- BUTTON -->
       <label for="mobile-menu" class="cursor-pointer relative z-50 block">
         <!-- hamburger -->
-        <svg
-          class="block peer-checked:hidden fill-current text-[var(--color-surfacedarker)] transition-all duration-300"
-          xmlns="http://www.w3.org/2000/svg"
-          width="34"
-          height="34"
-          viewBox="0 0 512 512"
-        >
+        <svg class="peer-checked:hidden text-[var(--color-surfacedarker)]" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 512 512" fill="currentColor">
           <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"></path>
         </svg>
 
         <!-- close -->
-        <svg class="hidden peer-checked:block fill-current !text-primary-content transition-all duration-300" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 512 512">
+        <svg class="hidden peer-checked:block text-primary-content" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 512 512" fill="currentColor">
           <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"></polygon>
         </svg>
       </label>
