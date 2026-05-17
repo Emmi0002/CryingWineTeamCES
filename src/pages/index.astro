@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 import Text from "../components/Text.astro";
 import Favorites from "../components/Favorites.astro";
 import Heading from "../components/Heading.astro";
+import TasteBox from "../components/TasteBox.astro";
 ---
 
 <MainLayout title="Crying Wine">
@@ -57,7 +58,9 @@ import Heading from "../components/Heading.astro";
     </section>
 
     <!-- GLÆDESTÅRER PÅ MOBILE-TABLET -->
-    <div class="grid gap-[var(--gapmobile-xl)] md:gap-[var(--gapweb-xl)]">
+    <div
+      class="grid gap-[var(--gapmobile-xl)] md:gap-[var(--gapweb-xl)] mb-[var(--gapmobile-xl)]"
+    >
       <Favorites />
 
       <section
@@ -241,6 +244,9 @@ import Heading from "../components/Heading.astro";
             alt="Pil"
           />
         </a>
+      </section>
+      <section class="mx-[var(--margin-mobile)] md:mx-[var(--margin-web)]">
+        <TasteBox />
       </section>
     </div>
   </main>
