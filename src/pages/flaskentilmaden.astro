@@ -5,28 +5,18 @@ import ProductCard from "../components/ProductCard.astro";
 ---
 
 <MainLayout title="Flasken til maden">
-  <main
-    class="mx-[var(--margin-mobile)] md:mx-[var(--margin-web)] my-30 flex flex-col gap-[var(--gapmobile-xl)] md:gap-[var(--gapweb-xl)]"
-  >
+  <main class="mx-[var(--margin-mobile)] md:mx-[var(--margin-web)] my-40 flex flex-col gap-[var(--gapmobile-xl)] md:gap-[var(--gapweb-xl)]">
     <Heading htmlheading="h1">Flasken til maden</Heading>
 
-    <Heading htmlheading="h3" size="small"
-      >Her skal der være filtre/kategorier</Heading
-    >
+    <Heading htmlheading="h3" size="small">Her skal der være filtre/kategorier</Heading>
 
     <section id="pasta" class="relative scroll-mt-40">
       <div>
         <Heading htmlheading="h2" size="medium">Pasta</Heading>
-        <img
-          src="/img/illustrations/food/Pasta.webp"
-          alt="Pasta illustration"
-          class="absolute -top-10 -right-10 lg:-top-35 md:-right-30 w-70 md:w-90 lg:w-120 -z-10 scale-[-1]"
-        />
+        <img src="/img/illustrations/food/Pasta.webp" alt="Pasta illustration" class="absolute -top-10 -right-10 lg:-top-35 md:-right-30 w-70 md:w-90 lg:w-120 -z-10 scale-[-1]" />
       </div>
 
-      <div
-        class="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center"
-      >
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center">
         <ProductCard
           imageSrc="/img/PlaceHolderProduct1.png"
           imageAlt="Produktbillede - Front"
@@ -73,16 +63,10 @@ import ProductCard from "../components/ProductCard.astro";
     <section id="meat" class="relative scroll-mt-40">
       <div>
         <Heading htmlheading="h2" size="medium">Kød</Heading>
-        <img
-          src="/img/illustrations/food/Meat.webp"
-          alt="Kød illustration"
-          class="absolute -top-20 -right-15 lg:-top-35 md:-right-35 w-70 md:w-90 lg:w-120 -z-10 -rotate-17"
-        />
+        <img src="/img/illustrations/food/Meat.webp" alt="Kød illustration" class="absolute -top-20 -right-15 lg:-top-35 md:-right-35 w-70 md:w-90 lg:w-120 -z-10 -rotate-17" />
       </div>
 
-      <div
-        class="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center"
-      >
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center">
         <ProductCard
           imageSrc="/img/PlaceHolderProduct1.png"
           imageAlt="Produktbillede - Front"
@@ -129,16 +113,10 @@ import ProductCard from "../components/ProductCard.astro";
     <section id="pizza" class="relative scroll-mt-40">
       <div>
         <Heading htmlheading="h2" size="medium">Pizza</Heading>
-        <img
-          src="/img/illustrations/food/Pizza.webp"
-          alt="Pizza illustration"
-          class="absolute -top-10 -right-17 lg:-top-25 md:-right-30 w-70 md:w-90 lg:w-120 -z-10 rotate-12"
-        />
+        <img src="/img/illustrations/food/Pizza.webp" alt="Pizza illustration" class="absolute -top-10 -right-17 lg:-top-25 md:-right-30 w-70 md:w-90 lg:w-120 -z-10 rotate-12" />
       </div>
 
-      <div
-        class="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center"
-      >
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center">
         <ProductCard
           imageSrc="/img/PlaceHolderProduct1.png"
           imageAlt="Produktbillede - Front"
@@ -185,16 +163,10 @@ import ProductCard from "../components/ProductCard.astro";
     <section id="fish" class="relative scroll-mt-40">
       <div>
         <Heading htmlheading="h2" size="medium">Fisk og skaldyr</Heading>
-        <img
-          src="/img/illustrations/food/Fish.webp"
-          alt="Fisk og skaldyr illustration"
-          class="absolute -top-15 -right-25 lg:-top-30 md:-right-30 w-70 md:w-90 lg:w-120 -z-10 rotate-20"
-        />
+        <img src="/img/illustrations/food/Fish.webp" alt="Fisk og skaldyr illustration" class="absolute -top-15 -right-25 lg:-top-30 md:-right-30 w-70 md:w-90 lg:w-120 -z-10 rotate-20" />
       </div>
 
-      <div
-        class="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center"
-      >
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center">
         <ProductCard
           imageSrc="/img/PlaceHolderProduct1.png"
           imageAlt="Produktbillede - Front"
@@ -241,16 +213,10 @@ import ProductCard from "../components/ProductCard.astro";
     <section id="tapas" class="relative scroll-mt-40">
       <div>
         <Heading htmlheading="h2" size="medium">Tapas</Heading>
-        <img
-          src="/img/illustrations/food/Tapas.webp"
-          alt="Tapas illustration"
-          class="absolute -top-5 -right-20 lg:-top-15 md:-right-40 w-70 md:w-90 lg:w-120 -z-10 rotate-20"
-        />
+        <img src="/img/illustrations/food/Tapas.webp" alt="Tapas illustration" class="absolute -top-5 -right-20 lg:-top-15 md:-right-40 w-70 md:w-90 lg:w-120 -z-10 rotate-20" />
       </div>
 
-      <div
-        class="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center"
-      >
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center">
         <ProductCard
           imageSrc="/img/PlaceHolderProduct1.png"
           imageAlt="Produktbillede - Front"
