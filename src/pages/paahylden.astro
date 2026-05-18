@@ -2,6 +2,8 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Heading from "../components/Heading.astro";
 import ProductCard from "../components/ProductCard.astro";
+import Button from "../components/Button.astro";
+import Text from "../components/Text.astro";
 
 const SUPABASE_URL = "https://lbkrfecnofyqzkuhuins.supabase.co";
 
@@ -22,10 +24,74 @@ console.log(CryingWine);
 ---
 
 <MainLayout title="På hylden">
-  <main class="max-w-full mx-auto px-4 lg:px-[var(--margin-web)] my-40">
-    <Heading htmlheading="h1" stylingclasses="my-[var(--gapweb-xl)]">Hele vinhylden</Heading>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[var(--gapweb-m)] justify-items-center">
-      {CryingWine.map((cryingwine) => <ProductCard product={cryingwine} quantity={1} />)}
+  <main class="mx-[var(--margin-mobile)] md:mx-[var(--margin-web)] my-40 flex flex-col gap-[var(--gapmobile-xl)] md:gap-[var(--gapweb-xl)]">
+    <Heading htmlheading="h1" size="large">Hele vinhylden</Heading>
+    <div class="flex gap-[var(--gapmobile-s)] lg:gap-[var(--gapweb-s)] carousel">
+      <Button variant="secondary" form="pill" type="button" data-filter="all"><Text tekstype="label" weight="bold" color="primary">ALLE</Text></Button>
+      <Button variant="secondary" form="pill" type="button" data-filter="white"><Text tekstype="label" weight="bold" color="primary">HVID</Text></Button>
+      <Button variant="secondary" form="pill" type="button" data-filter="orange"><Text tekstype="label" weight="bold" color="primary">ORANGE</Text></Button>
+      <Button variant="secondary" form="pill" type="button" data-filter="rose"><Text tekstype="label" weight="bold" color="primary">ROSÈ</Text></Button>
+      <Button variant="secondary" form="pill" type="button" data-filter="red"><Text tekstype="label" weight="bold" color="primary">RØD</Text></Button>
+      <Button variant="secondary" form="pill" type="button" data-filter="bubbles"><Text tekstype="label" weight="bold" color="primary">BOBLER</Text></Button>
+      <Button variant="secondary" form="pill" type="button" data-filter="natur"><Text tekstype="label" weight="bold" color="primary">NATUR</Text></Button>
+      <Button variant="secondary" form="pill" type="button" data-filter="alkoholfri"><Text tekstype="label" weight="bold" color="primary">ALKOHOLFRI</Text></Button>
+      <Button variant="secondary" form="pill" type="button" data-filter="smagskasser"><Text tekstype="label" weight="bold" color="primary">SMAGSKASSER</Text></Button>
+      <Button variant="secondary" form="pill" type="button" data-filter="merch"><Text tekstype="label" weight="bold" color="primary">MERCH</Text></Button>
+    </div>
+    <div
+      class="grid grid-cols-[repeat(auto-fit,minmax(160px,175px))] lg:grid-cols-[repeat(auto-fit,minmax(250px,290px))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center md:justify-start"
+      data-wine-grid
+    >
+      {
+        CryingWine.map((cryingwine) => (
+          <div
+            data-wine-card
+            data-category={String(cryingwine.Category ?? "")
+              .trim()
+              .toUpperCase()}
+          >
+            <ProductCard product={cryingwine} quantity={1} />
+          </div>
+        ))
+      }
     </div>
   </main>
+
+  <script>
+    const filters = {
+      all: () => true,
+      white: (category) => ["HVID", "HVID/ALKOHOLFRI", "HVID/NATUR", "RØD/NATUR"].includes(category),
+      orange: (category) => category === "ORANGE",
+      rose: (category) => ["ROSE", "ROSÉ"].includes(category),
+      red: (category) => ["RØD", "RØD/NATUR"].includes(category),
+      bubbles: (category) => category === "BOBLER",
+      natur: (category) => category.includes("NATUR"),
+      alkoholfri: (category) => category.includes("ALKOHOLFRI"),
+      smagskasser: (category) => category === "SMAGSKASSER",
+      merch: (category) => category === "MERCH",
+    };
+
+    const cards = document.querySelectorAll<HTMLElement>("[data-wine-card]");
+    const buttons = document.querySelectorAll<HTMLElement>("[data-filter]");
+
+    const applyFilter = (filterName) => {
+      const matcher = filters[filterName] ?? filters.all;
+
+      cards.forEach((card) => {
+        const category = (card.dataset.category || "").trim().toUpperCase();
+        card.classList.toggle("hidden", !matcher(category));
+      });
+
+      buttons.forEach((button) => {
+        button.toggleAttribute("aria-pressed", button.dataset.filter === filterName);
+      });
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => applyFilter(button.dataset.filter || "all"));
+    });
+
+    applyFilter("all");
+    history.replaceState(null, "", window.location.pathname);
+  </script>
 </MainLayout>
