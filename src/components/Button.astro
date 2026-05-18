@@ -1,13 +1,14 @@
 ---
 // Henter parametrene fra Astro.props
-const { variant = "primary", size = "responsive", form = "square", type = "button", isActive = false, href = "", target = "_self" } = Astro.props;
+const { variant = "primary", size = "responsive", form = "square", type = "button", isActive = false, href = "", target = "_self", ...rest } = Astro.props;
 
 //Definer den styling (DaisyUI base button class)
 const buttonStyling = "btn";
 
 //Definer den styling (DaisyUI variant classes)
 const variantClasses = {
-  primary: "font-bold px-8 py-4 bg-primary text-primary-content hover:bg-accent focus:bg-accent focus:border-primary focus:text-primary focus:border-2 active:bg-surfacedarker active:text-primary-content",
+  primary:
+    "font-bold px-8 py-4 bg-primary text-primary-content hover:bg-accent focus:bg-accent focus:border-primary focus:text-primary focus:border-2 active:bg-surfacedarker active:text-primary-content",
   secondary: "font-bold border-2 px-8 py-4 border-primary text-primary bg-neutral hover:text-accent hover:border-accent focus:bg-accent focus:text-primary focus:border-primary",
 };
 
@@ -29,11 +30,11 @@ const formClasses = {
 
 <!--Sæt classes for den pågældende knap sammen ved hjælp af Astros class:list -->{
   href ? (
-    <a href={href} target={target} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size], formClasses[form], isActive && activeClasses[variant]]}>
+    <a href={href} target={target} {...rest} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size], formClasses[form], isActive && activeClasses[variant]]}>
       <slot />
     </a>
   ) : (
-    <button type={type} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size], formClasses[form], isActive && activeClasses[variant]]}>
+    <button type={type} {...rest} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size], formClasses[form], isActive && activeClasses[variant]]}>
       <slot />
     </button>
   )
