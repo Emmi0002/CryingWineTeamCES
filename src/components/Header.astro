@@ -46,8 +46,11 @@ import Heading from "../components/Heading.astro";
     </a>
 
     <!-- CART -->
-    <!-- Sæt dit eget billede ind her -->
-    <img src="/img/illustrations/putikassendark.png" alt="Kurv" class="w-7 h-7" />
+    <a href="/" class="relative inline-flex items-start justify-center">
+      <!-- Sæt dit eget billede ind her -->
+      <img src="/img/illustrations/putikassendark.png" alt="Kurv" class="w-7 h-7" />
+      <span id="cart-count-badge" class="hidden absolute -top-2 -right-2 min-w-5 h-5 px-1 rounded-full bg-primary text-primary-content text-[10px] font-bold leading-5 text-center"> 0 </span>
+    </a>
 
     <!-- MOBILE MENU -->
     <div class="lg:hidden relative z-50">
@@ -100,3 +103,25 @@ import Heading from "../components/Heading.astro";
     </div>
   </div>
 </nav>
+
+<script is:inline>
+  (() => {
+    const badge = document.getElementById("cart-count-badge");
+    if (!badge) return;
+
+    let count = 0;
+
+    const updateBadge = () => {
+      badge.textContent = String(count);
+      badge.classList.toggle("hidden", count === 0);
+    };
+
+    updateBadge();
+
+    window.addEventListener("cartAdded", (event) => {
+      const increment = Number(event?.detail?.quantity ?? 1) || 1;
+      count += increment;
+      updateBadge();
+    });
+  })();
+</script>
