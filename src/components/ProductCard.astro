@@ -2,8 +2,7 @@
 import CardButton from "./CardButton.astro";
 import Text from "./Text.astro";
 
-// Henter parametrene fra Astro.props
-const { imageSrc = "", imageAlt = "", imageSrc2 = "", imageAlt2 = "", title = "Card Title", pris = "", buttonText = "Buy Now", quantity = 1 } = Astro.props;
+const { product, quantity = 1 } = Astro.props;
 ---
 
 <!-- xdata bruges til at styre visningen af overlayet når man lægger i kurv -->
@@ -22,48 +21,47 @@ const { imageSrc = "", imageAlt = "", imageSrc2 = "", imageAlt2 = "", title = "C
     }
   }"
 >
-  <div class="card w-full rounded-none overflow-hidden">
-    <div class="relative w-full h-44 sm:h-56 lg:h-72 overflow-hidden" @mouseenter="hovering = true" @mouseleave="hovering = false">
-      <!-- Kategory tekst -->
-      <Text teksttype="headline" weight="bold" color="negative" stylingclasses="z-10 absolute top-13 right-3 lg:top-18 lg:right-5 rotate-90 origin-right">Kateogri</Text>
-      <!-- Image 1 (top layer, fades on hover) -->
-      <figure class="absolute inset-0">
-        <img src={imageSrc} alt={imageAlt} class="w-full h-full object-cover rounded-none transition-opacity duration-300" x-bind:class="hovering ? 'opacity-0' : 'opacity-100'" />
-      </figure>
+  <a href="{`/product/${product.id}`}">
+    <div class="card w-full rounded-none overflow-hidden">
+      <div class="relative w-full h-44 sm:h-56 lg:h-72 overflow-hidden" @mouseenter="hovering = true" @mouseleave="hovering = false">
+        <!-- Kategory tekst -->
+        <Text tekstype="headline" weight="bold" color="negative" stylingclasses="z-10 absolute top-1 right-3 lg:top-1 lg:right-0 whitespace-nowrap [writing-mode:vertical-rl] [text-orientation:mixed]"
+          >{product.Category}</Text
+        >
+        <!-- Image 1 (top layer, fades on hover) -->
+        <figure class="absolute inset-0">
+          <img src={product.img1} alt={product.Productname} class="w-full h-full object-cover rounded-none transition-opacity duration-300" x-bind:class="hovering ? 'opacity-0' : 'opacity-100'" />
+        </figure>
 
-      <!-- Image 2 (bottom layer, shows on hover) -->
-      <figure class="absolute inset-0">
-        <img
-          src={imageSrc2 || imageSrc}
-          alt={imageAlt2 || imageAlt}
-          class="w-full h-full object-cover rounded-none transition-opacity duration-300"
-          x-bind:class="hovering ? 'opacity-100' : 'opacity-0'"
-        />
-      </figure>
+        <!-- Image 2 (bottom layer, shows on hover) -->
+        <figure class="absolute inset-0">
+          <img src={product.img2} alt={product.Productname} class="w-full h-full object-cover rounded-none transition-opacity duration-300" x-bind:class="hovering ? 'opacity-100' : 'opacity-0'" />
+        </figure>
+      </div>
 
       <!-- Button on top of image 2 -->
       <div
         class="hidden lg:flex absolute inset-0 items-center justify-center px-4 transform transition-all duration-300"
         x-bind:class="hovering ? 'opacity-100 translate-y-4/11' : 'opacity-0 translate-y-full'"
       >
-        <CardButton variant="primary" size="wide">{buttonText}</CardButton>
+        <CardButton variant="primary" size="wide"><Text teksttype="label" weight="bold" color="negative">Put i kassen</Text></CardButton>
       </div>
     </div>
     <div class="my-[var(--gapweb-xxs)]">
-      <span class="badge bg-info rounded-radius-selector"><Text teksttype="footnote" weight="light">Badge1</Text></span>
-      <span class="badge bg-info rounded-radius-selector"><Text teksttype="footnote" weight="light">Badge2</Text></span>
-      <span class="badge bg-info rounded-radius-selector"><Text teksttype="footnote" weight="light">Badge3</Text></span>
+      <span class="badge bg-info rounded-radius-selector"><Text tekstype="footnote" weight="light">{product.Badge1}</Text></span>
+      <span class="badge bg-info rounded-radius-selector"><Text tekstype="footnote" weight="light">{product.Badge2}</Text></span>
+      <span class="badge bg-info rounded-radius-selector"><Text tekstype="footnote" weight="light">{product.Badge3}</Text></span>
     </div>
     <img src="/img/illustrations/VectorLine.png" alt="Seperation line" class="w-[84px] lg:w-[118px] my-[var(--gapweb-xxs)]" />
 
     <div class="my-[var(--gapweb-xxs)]">
-      <Text teksttype="headline" weight="bold">Productname</Text>
-      <Text teksttype="body" weight="light">Price</Text>
+      <Text tekstype="headline" weight="bold">{product.Productname}</Text>
+      <Text tekstype="body" weight="light">{product.Price} DKK</Text>
       <div class="lg:hidden my-[var(--gapweb-xs)] w-full">
-        <CardButton variant="primary" size="wide">{buttonText}</CardButton>
+        <CardButton variant="primary" size="wide"><Text teksttype="label" weight="bold" color="negative">Put i kassen</Text></CardButton>
       </div>
     </div>
-  </div>
+  </a>
 
   <!-- CART OVERLAY -->
   <div class="fixed top-25 right-4 z-50">
@@ -79,7 +77,7 @@ const { imageSrc = "", imageAlt = "", imageSrc2 = "", imageAlt2 = "", title = "C
     >
       <!-- Billede -->
       <div class="shrink-0">
-        <img src={imageSrc} alt={imageAlt} class="w-20 md:w-32 h-auto" />
+        <img src={product.img1} alt={product.Productname} class="w-20 md:w-32 h-auto" />
       </div>
 
       <!-- Tekst -->
@@ -88,8 +86,8 @@ const { imageSrc = "", imageAlt = "", imageSrc2 = "", imageAlt2 = "", title = "C
 
         <img src="/img/illustrations/VectorLine.png" alt="Seperation line" class="w-[84px] lg:w-[118px] my-(--gapweb-xxs)" />
 
-        <Text teksttype="headline" weight="regular" color="body"> Productname </Text>
-        <Text teksttype="body" weight="regular" color="primary"> Price </Text>
+        <Text tekstype="headline" weight="regular" color="body"> {product.Productname} </Text>
+        <Text tekstype="body" weight="regular" color="primary"> {product.Price} </Text>
         <Text teksttype="body">Antal: {quantity}</Text>
       </div>
     </div>
