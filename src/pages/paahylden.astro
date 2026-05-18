@@ -1,234 +1,31 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Heading from "../components/Heading.astro";
-import Text from "../components/Text.astro";
 import ProductCard from "../components/ProductCard.astro";
+
+const SUPABASE_URL = "https://lbkrfecnofyqzkuhuins.supabase.co";
+
+const SUPABASE_KEY = "sb_publishable_y5b_SwFaDlD8jvcpEA-GiQ_nP-3VCkg";
+
+const response = await fetch(`${SUPABASE_URL}/rest/v1/CryingWine?select=*`, {
+  method: "GET",
+  headers: {
+    apikey: SUPABASE_KEY,
+    Authorization: `Bearer ${SUPABASE_KEY}`,
+    "Content-Type": "application/json",
+  },
+});
+
+const CryingWine = (await response.json()) ?? [];
+
+console.log(CryingWine);
 ---
 
 <MainLayout title="På hylden">
   <main class="max-w-full mx-auto px-4 lg:px-[var(--margin-web)] my-30">
     <Heading htmlheading="h1" stylingclasses="my-[var(--gapweb-xl)]">Hele vinhylden</Heading>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[var(--gapweb-m)] justify-items-center">
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
-      <ProductCard
-        imageSrc="/img/PlaceHolderProduct1.png"
-        imageAlt="Produktbillede - Front"
-        imageSrc2="/img/PlaceHolderProduct2.jpg"
-        imageAlt2="Produktbillede - Back"
-        title="Château de la Tour"
-        pris="199,95 DKK"
-        buttonText="Put i kassen"
-        quantity={1}
-      />
+      {CryingWine.map((cryingwine) => <ProductCard product={cryingwine} quantity={1} />)}
     </div>
   </main>
 </MainLayout>
