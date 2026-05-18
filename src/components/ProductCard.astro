@@ -17,7 +17,7 @@ const { imageSrc = "", imageAlt = "", imageSrc2 = "", imageAlt2 = "", title = "C
       setTimeout(() => this.open = false, 3000)
       // Dispatch cartAdded event til header
       window.dispatchEvent(new CustomEvent('cartAdded', { 
-        detail: { quantity: parseInt('{quantity}') || 1 } 
+        detail: { quantity: 1 } 
       }))
     }
   }"
@@ -44,7 +44,7 @@ const { imageSrc = "", imageAlt = "", imageSrc2 = "", imageAlt2 = "", title = "C
       <!-- Button on top of image 2 -->
       <div
         class="hidden lg:flex absolute inset-0 items-center justify-center px-4 transform transition-all duration-300"
-        x-bind:class="hovering ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'"
+        x-bind:class="hovering ? 'opacity-100 translate-y-4/11' : 'opacity-0 translate-y-full'"
       >
         <CardButton variant="primary" size="wide">{buttonText}</CardButton>
       </div>
