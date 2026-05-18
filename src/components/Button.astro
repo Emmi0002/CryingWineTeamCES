@@ -1,22 +1,40 @@
 ---
 // Henter parametrene fra Astro.props
-const { variant= "primary", size = "medium" } = Astro.props; 
- 
-//Definer den styling (Tailwind classes, der gør sig gældende for alle knapper)
-const buttonStyling = "border-2 px-16 py-4"; 
- 
-//Definer den styling (Tailwind classes), der gør sig gældende for de forskellige varianter 
+const { variant = "primary", size = "responsive", form = "square", type = "button", isActive = false, href = "", target = "_self" } = Astro.props;
+
+//Definer den styling (DaisyUI base button class)
+const buttonStyling = "btn";
+
+//Definer den styling (DaisyUI variant classes)
 const variantClasses = {
-"primary": "border-black hover:bg-black hover:text-white hover:-skew-x-12 transition-all duration-700", /* border-primary-500 */
-"secondary": "border-blue-500 hover:bg-blue-500 hover:border-blue-200" /* border-secondary-500 */
+  primary: "font-bold px-8 py-4 bg-primary text-primary-content hover:bg-accent focus:bg-accent focus:border-primary focus:text-primary focus:border-2 active:bg-surfacedarker active:text-primary-content",
+  secondary: "font-bold border-2 px-8 py-4 border-primary text-primary bg-neutral hover:text-accent hover:border-accent focus:bg-accent focus:text-primary focus:border-primary",
 };
- 
-//Definer den styling (Tailwind classes), der gør sig gældende for de forskelligeog størrelser.
+
+const activeClasses = {
+  primary: "bg-surfacedarker text-primary-content ",
+  secondary: "bg-surfacedarker text-primary-content ",
+};
+
+//Definer den styling (DaisyUI size classes)
 const sizeClasses = {
-"large": "text-4xl",
-"medium": "text-xl",
-"small": "text-large"
+  responsive: "btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl",
+};
+
+const formClasses = {
+  square: "rounded-none",
+  pill: "rounded-full",
 };
 ---
-<!--Sæt classes for den pågældende knap sammen ved hjælp af Astros class:list -->
-<button class:list={[buttonStyling, variantClasses[variant], sizeClasses[size]]}><slot /></button>
+
+<!--Sæt classes for den pågældende knap sammen ved hjælp af Astros class:list -->{
+  href ? (
+    <a href={href} target={target} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size], formClasses[form], isActive && activeClasses[variant]]}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size], formClasses[form], isActive && activeClasses[variant]]}>
+      <slot />
+    </button>
+  )
+}
