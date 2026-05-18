@@ -4,6 +4,7 @@ import Text from "../components/Text.astro";
 import Heading from "../components/Heading.astro";
 import Favorites from "../components/Favorites.astro";
 import TasteBox from "../components/TasteBox.astro";
+import CardButton from "../components/CardButton.astro";
 ---
 
 <MainLayout>
@@ -18,7 +19,12 @@ import TasteBox from "../components/TasteBox.astro";
         src="/img/illustrations/arrowFoodparring.webp"
         alt="Pil"
       />
-      <Text teksttype="caption" stylingclasses="text-right" color="accent">
+      <Text
+        teksttype="caption"
+        weight="caption"
+        stylingclasses="text-right"
+        color="accent"
+      >
         Tilbage
       </Text>
     </a>
@@ -194,11 +200,7 @@ import TasteBox from "../components/TasteBox.astro";
             </button>
 
             <!-- Købsknap -->
-            <button
-              class="ml-6 bg-[var(--color-primary)] text-white px-6 py-3 rounded"
-            >
-              Midlertidig knap
-            </button>
+            <CardButton variant="primary"> Put i kassen </CardButton>
           </div>
         </div>
       </section>

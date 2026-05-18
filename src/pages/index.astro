@@ -4,6 +4,7 @@ import Text from "../components/Text.astro";
 import Favorites from "../components/Favorites.astro";
 import Heading from "../components/Heading.astro";
 import TasteBox from "../components/TasteBox.astro";
+import Link from "../components/Link.astro";
 ---
 
 <MainLayout title="Crying Wine">
@@ -47,19 +48,19 @@ import TasteBox from "../components/TasteBox.astro";
               Se hele vores udvalg og find en vin der passer til dit øjeblik.
             </Text>
 
-            <button
-              class="border-2 border-blue-800 text-blue-800 px-10 py-4 font-bold hover:bg-blue-800 hover:text-white transition"
-            >
-              Midlertidig knap!!
-            </button>
+            <Link href="/paahylden" variant="secondary">
+              Se hele vinhylden
+            </Link>
           </div>
         </div>
       </div>
     </section>
-
     <!-- GLÆDESTÅRER PÅ MOBILE-TABLET -->
     <div
-      class="grid gap-[var(--gapmobile-xl)] md:gap-[var(--gapweb-xl)] mb-[var(--gapmobile-xl)]"
+      class="grid
+              gap-[var(--gapmobile-xl)]
+              md:gap-[var(--gapweb-xl)]
+              mb-[var(--gapmobile-xl)]"
     >
       <Favorites />
 
@@ -94,11 +95,7 @@ import TasteBox from "../components/TasteBox.astro";
             <Text stylingclasses="pt-2 pb-6" color="negative">
               Glædestårer på flaske, til alt det der er værd at skåle for.
             </Text>
-            <button
-              class="bg-white border-2 border-blue-800 text-blue-800 px-10 py-4 font-bold hover:bg-blue-800 hover:text-white transition"
-            >
-              Midlertidig knap!!
-            </button>
+            <Link href="/bagomcrying" variant="secondary"> Bag om crying </Link>
           </div>
         </div>
 
@@ -133,11 +130,9 @@ import TasteBox from "../components/TasteBox.astro";
                 for.
               </Text>
 
-              <button
-                class="bg-white border-2 border-blue-800 text-blue-800 px-10 py-4 font-bold hover:bg-blue-800 hover:text-white transition"
-              >
-                Midlertidig knap!!
-              </button>
+              <Link href="/bagomcrying" variant="secondary">
+                Bag om crying
+              </Link>
             </div>
 
             <!-- Kolonne 2: flasken (billede) -->
@@ -234,7 +229,12 @@ import TasteBox from "../components/TasteBox.astro";
           href="/flaskentilmaden"
           class="flex flex-col items-end mr-11 md:mr-[var(--margin-web)]"
         >
-          <Text teksttype="caption" stylingclasses="text-right" color="accent">
+          <Text
+            teksttype="caption"
+            weight="caption"
+            stylingclasses="text-right"
+            color="accent"
+          >
             Se mere
           </Text>
 
