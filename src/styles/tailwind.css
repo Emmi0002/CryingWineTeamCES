@@ -23,6 +23,24 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "JostBold";
+  src:
+    url("/fonts/jost/Jost-Bold.woff2") format("woff2"),
+    url("/fonts/jost/Jost-Bold.woff") format("woff"),
+    url("/fonts/jost/Jost-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "JostLight";
+  src:
+    url("/fonts/jost/Jost-Light.woff2") format("woff2"),
+    url("/fonts/jost/Jost-Light.woff") format("woff"),
+    url("/fonts/jost/Jost-Light.ttf") format("truetype");
+  font-weight: light;
+  font-style: normal;
+}
 
 @font-face {
   font-family: "theballpoint";
@@ -82,6 +100,8 @@
   /*Typografi */
   --font-Heading: "ArchivoBlack";
   --font-Text: "Jost";
+  --font-TextBold: "JostBold";
+  --font-TextLight: "JostLight";
   --font-Caption: "theballpoint";
 }
 
