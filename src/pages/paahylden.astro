@@ -35,8 +35,8 @@ console.log(CryingWine);
       <Button variant="secondary" form="pill" type="button" data-filter="bubbles"><Text tekstype="label" weight="bold" color="primary">BOBLER</Text></Button>
       <Button variant="secondary" form="pill" type="button" data-filter="natur"><Text tekstype="label" weight="bold" color="primary">NATUR</Text></Button>
       <Button variant="secondary" form="pill" type="button" data-filter="alkoholfri"><Text tekstype="label" weight="bold" color="primary">ALKOHOLFRI</Text></Button>
-      <Button variant="secondary" form="pill" type="button" data-filter="smagskasser"><Text tekstype="label" weight="bold" color="primary">SMAGSKASSER</Text></Button>
-      <Button variant="secondary" form="pill" type="button" data-filter="merch"><Text tekstype="label" weight="bold" color="primary">MERCH</Text></Button>
+      <Button variant="secondary" form="pill" href="/smagskasser"><Text tekstype="label" weight="bold" color="primary">SMAGSKASSER</Text></Button>
+      <Button variant="secondary" form="pill" href="/merch"><Text tekstype="label" weight="bold" color="primary">MERCH</Text></Button>
     </div>
     <div
       class="grid grid-cols-[repeat(auto-fit,minmax(160px,175px))] lg:grid-cols-[repeat(auto-fit,minmax(250px,290px))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center md:justify-start"
@@ -60,7 +60,7 @@ console.log(CryingWine);
   <script>
     const filters = {
       all: () => true,
-      white: (category) => ["HVID", "HVID/ALKOHOLFRI", "HVID/NATUR", "RØD/NATUR"].includes(category),
+      white: (category) => ["HVID", "HVID/ALKOHOLFRI", "HVID/NATUR"].includes(category),
       orange: (category) => category === "ORANGE",
       rose: (category) => ["ROSE", "ROSÉ"].includes(category),
       red: (category) => ["RØD", "RØD/NATUR"].includes(category),
