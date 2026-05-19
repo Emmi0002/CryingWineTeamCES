@@ -2,33 +2,36 @@
 // Henter parametrene fra Astro.props
 const { variant = "primary", size = "responsive", form = "square", type = "button", isActive = false, href = "", target = "_self", ...rest } = Astro.props;
 
-//Definer den styling (DaisyUI base button class)
-const buttonStyling = "btn";
+// Base styling
+const buttonStyling = "btn filter-btn";
 
-//Definer den styling (DaisyUI variant classes)
+// Variant styling
 const variantClasses = {
-  primary:
-    "font-bold px-8 py-4 bg-primary text-primary-content hover:bg-accent focus:bg-accent focus:border-primary focus:text-primary focus:border-2 active:bg-surfacedarker active:text-primary-content",
+  primary: "font-bold px-8 py-4 bg-primary text-primary-content hover:bg-accent hover:text-primary focus:bg-accent focus:text-primary focus:border-primary focus:border-2",
+
   secondary: "font-bold border-2 px-8 py-4 border-primary text-primary bg-neutral hover:text-accent hover:border-accent focus:bg-accent focus:text-primary focus:border-primary",
 };
 
+// Active styling
 const activeClasses = {
-  primary: "bg-surfacedarker text-primary-content ",
-  secondary: "bg-surfacedarker text-primary-content ",
+  primary: "bg-[var(--color-surfacedarker)] border-[var(--color-surfacedarker)]",
+
+  secondary: "bg-[var(--color-surfacedarker)] border-[var(--color-surfacedarker)]",
 };
 
-//Definer den styling (DaisyUI size classes)
+// Size styling
 const sizeClasses = {
   responsive: "btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl",
 };
 
+// Shape styling
 const formClasses = {
   square: "rounded-none",
   pill: "rounded-full",
 };
 ---
 
-<!--Sæt classes for den pågældende knap sammen ved hjælp af Astros class:list -->{
+{
   href ? (
     <a href={href} target={target} {...rest} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size], formClasses[form], isActive && activeClasses[variant]]}>
       <slot />
@@ -39,3 +42,35 @@ const formClasses = {
     </button>
   )
 }
+
+<style is:inline>
+  .is-active {
+    background: var(--color-surfacedarker) !important;
+    color: var(--color-primary-content) !important;
+    border-color: var(--color-surfacedarker) !important;
+  }
+
+  .is-active * {
+    color: var(--color-primary-content) !important;
+  }
+</style>
+
+<script is:inline>
+  if (typeof window !== "undefined" && !window.__filterButtonsBound) {
+    window.__filterButtonsBound = true;
+
+    document.addEventListener("click", (e) => {
+      const clickedBtn = e.target.closest(".filter-btn");
+
+      if (!clickedBtn) return;
+
+      // Fjern active fra alle filter knapper
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.classList.remove("is-active");
+      });
+
+      // Tilføj active til den klikkede
+      clickedBtn.classList.add("is-active");
+    });
+  }
+</script>
