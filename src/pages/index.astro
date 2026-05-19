@@ -26,7 +26,9 @@ import Link from "../components/Link.astro";
             <!-- LOGO DESKTOP -->
             <img class="hidden lg:block absolute w-[95%] bottom-[-100px] left-[0%]" src="/img/HeroLogo.webp" alt="Crying Wine logo" />
 
-            <Text> Crying Wine er til dig som ønsker en vin baseret på din situation. Trænger du til en iskold hvidvin på terrassen, men ved ikke hvilken? Eller leder du efter en rødvin til grillaftenen? </Text>
+            <Text>
+              Crying Wine er til dig som ønsker en vin baseret på din situation. Trænger du til en iskold hvidvin på terrassen, men ved ikke hvilken? Eller leder du efter en rødvin til grillaftenen?
+            </Text>
 
             <Text stylingclasses="pt-2 pb-6"> Se hele vores udvalg og find en vin der passer til dit øjeblik. </Text>
 
@@ -42,14 +44,11 @@ import Link from "../components/Link.astro";
               mb-[var(--gapmobile-xl)]">
       <Favorites />
 
-      <section class="bg-[url('/img/BlobGrid.webp')]
-    bg-cover
-    bg-no-repeat md:flex">
-        <div class="2xl:hidden m-[var(--margin-mobile)] md:m-[var(--margin-web)]">
-          <div class="flex items-center gap-5 mb-10 whitespace-nowrap md:pr-40">
-            <Heading htmlheading="h2" size="medium" color="secondary"> Glædestårer på </Heading>
-            <img class="h-40 md:h-60" src="/img/illustrations/WineBottleTall.webp" alt="vinflaske" />
-            <Heading htmlheading="h2" size="medium" color="secondary"> flaske </Heading>
+      <section class="bg-[url('/img/BlobGrid.webp')] bg-cover bg-no-repeat md:flex">
+        <div class="relative 2xl:hidden m-[var(--margin-mobile)] md:m-[var(--margin-web)]">
+          <img class="h-50 md:h-100 absolute top-3 right-10 md:-right-5 md:-top-15" src="/img/illustrations/WineBottleTall.webp" alt="vinflaske" />
+          <div class="mb-[var(--gapweb-xs)] gap-5 whitespace-nowrap md:pr-40">
+            <Heading htmlheading="h2" size="medium" color="secondary"> Glædestårer på flaske</Heading>
           </div>
           <div class="max-w-80 lg:max-w-95">
             <Text color="negative">
@@ -63,10 +62,10 @@ import Link from "../components/Link.astro";
 
         <!-- GLÆDESTÅRER PÅ DESKTOP -->
         <div class="hidden 2xl:block m-[var(--margin-mobile)] md:m-[var(--margin-web)]">
-          <div class="grid grid-cols-4 gap-[var(--gapweb-xl)]">
+          <div class="grid grid-cols-3 gap-[var(--gapweb-xl)]">
             <!-- Kolonne 1: tekst + knap -->
             <div class="col-span-2">
-              <Heading stylingclasses="whitespace-nowrap mb-10" htmlheading="h2" size="medium" color="secondary"> Glædestårer på </Heading>
+              <Heading stylingclasses="whitespace-nowrap mb-10" htmlheading="h2" size="medium" color="secondary"> Glædestårer på flaske</Heading>
 
               <Text color="negative"> Crying Wine er skabt til lange middage, spontane aftener og øjeblikke, der ender bedre end planlagt. </Text>
 
@@ -80,16 +79,6 @@ import Link from "../components/Link.astro";
               </Text>
 
               <Link href="/bagomcrying" variant="secondary"> Bag om crying </Link>
-            </div>
-
-            <!-- Kolonne 2: flasken (billede) -->
-            <div>
-              <img src="/img/illustrations/WineBottleTall.webp" alt="vinflaske" />
-            </div>
-
-            <!-- Kolonne 3: heading -->
-            <div class="-ml-20">
-              <Heading htmlheading="h2" size="medium" color="secondary"> flaske </Heading>
             </div>
           </div>
         </div>
