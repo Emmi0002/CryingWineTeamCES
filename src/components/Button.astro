@@ -33,11 +33,11 @@ const formClasses = {
 
 {
   href ? (
-    <a href={href} target={target} {...rest} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size], formClasses[form], isActive && activeClasses[variant]]}>
+    <a href={href} target={target} data-variant={variant} {...rest} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size], formClasses[form], isActive && activeClasses[variant]]}>
       <slot />
     </a>
   ) : (
-    <button type={type} {...rest} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size], formClasses[form], isActive && activeClasses[variant]]}>
+    <button type={type} data-variant={variant} {...rest} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size], formClasses[form], isActive && activeClasses[variant]]}>
       <slot />
     </button>
   )
@@ -52,6 +52,12 @@ const formClasses = {
 
   .is-active * {
     color: var(--color-primary-content) !important;
+  }
+
+  /* Ensure secondary variant children turn accent color on hover/focus, but do not override active text color */
+  .filter-btn[data-variant="secondary"]:not(.is-active):hover *,
+  .filter-btn[data-variant="secondary"]:not(.is-active):focus * {
+    color: var(--color-accent) !important;
   }
 </style>
 
