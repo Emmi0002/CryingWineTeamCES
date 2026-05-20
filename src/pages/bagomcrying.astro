@@ -12,7 +12,7 @@ import ContactInfo from "../components/ContactInfo.astro";
       <!-- tekst om crying -->
       <article
         class="bg-[url('/img/BlobGrid.webp')]
-    bg-cover
+    bg-cover bg-fixed
     bg-no-repeat md:flex bg-top px-[var(--gapmobile-s)] lg:px-[var(--gapweb-s)] mt-[var(--gapmobile-s)] lg:mt-[var(--gapweb-s)] mb-[var(--gapmobile-s)] lg:mb-[var(--gapweb-s)] pt-[var(--gapmobile-s)] pb-[var(--gapmobile-xs)] lg:pt-[var(--gapweb-s)] lg:pb-[var(--gapweb-xl)]"
       >
         <div class="grid lg:grid-cols-2 items-start gap-[var(--gapmobile-s)] lg:gap-[var(--gapweb-s)] mx-[var(--margin-mobile)] lg:mx-[var(--margin-web)]">
@@ -53,13 +53,13 @@ import ContactInfo from "../components/ContactInfo.astro";
             en god pris.
           </Text>
 
-          <img src="/img/piavin.png" alt="vinflaske" class="justify-self-end pr-10 max-w-[300px] lg:max-w-[360px]" />
+          <img src="/img/piavin.png" alt="vinflaske" class="justify-self-end pr-10 max-w-[300px] lg:max-w-[360px] intersect:animate-fade-right intersect:animate-duration-[1000ms] intersect:animate-delay-[400ms]" />
         </div>
         <div>
           <img src="/img/piaograsmus.webp" alt="billede af Pia og Rasmus, som ejer Crying Wine" class="w-full h-auto" />
         </div>
         <div>
-          <img src="/img/rasmusvin.png" alt="vinflaske" class="justify-self-start pl-10 pb-10 max-w-[380px] lg:max-w-[450px]" />
+          <img src="/img/rasmusvin.png" alt="vinflaske" class="justify-self-start pl-10 pb-10 max-w-[380px] lg:max-w-[450px] intersect:animate-fade-left intersect:animate-duration-[1000ms] intersect:animate-delay-[600ms]" />
           <Heading htmlheading="h3" size="small" stylingclasses="text-accent">Hvilken vin er Rasmus</Heading>
           <Text teksttype="body" weight="regular" color="body"
             >Jeg ville vælge at beskrive mig selv som en hvid burgogne. Det er en klassisk vin, som smager rigtig godt. Det er en meget elegant vin, super god kvalitet, den er bare velsmagende. Jeg kan godt lide at etiketten ikke er moderne, men
