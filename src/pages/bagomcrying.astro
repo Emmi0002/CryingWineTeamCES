@@ -62,7 +62,7 @@ import ContactInfo from "../components/ContactInfo.astro";
           <img src="/img/rasmusvin.png" alt="vinflaske" class="justify-self-start pl-10 pb-10 max-w-[380px] lg:max-w-[450px]" />
           <Heading htmlheading="h3" size="small" stylingclasses="text-accent">Hvilken vin er Rasmus</Heading>
           <Text teksttype="body" weight="regular" color="body"
-            >JJeg ville vælge at beskrive mig selv som en hvid burgogne. Det er en klassisk vin, som smager rigtig godt. Det er en meget elegant vin, super god kvalitet, den er bare velsmagende. Jeg kan godt lide at etiketten ikke er moderne, men
+            >Jeg ville vælge at beskrive mig selv som en hvid burgogne. Det er en klassisk vin, som smager rigtig godt. Det er en meget elegant vin, super god kvalitet, den er bare velsmagende. Jeg kan godt lide at etiketten ikke er moderne, men
             meget old fashioned. når det kommer til vin vil jeg gerne betale pengene for det.
           </Text>
         </div>
@@ -70,17 +70,17 @@ import ContactInfo from "../components/ContactInfo.astro";
     </section>
     <!-- kontaktoplysninger -->
     <section class="mx-[var(--margin-mobile)] lg:mx-[var(--margin-web)]">
-      <div class="lg:grid grid-cols-2 items-stretch gap-6">
-        <div>
+      <div class="w-full xl:grid xl:grid-cols-2 items-stretch gap-6">
+        <div class="w-full">
           <Heading htmlheading="h2" size="medium">Kontaktinformationer</Heading>
 
-          <div class="grid grid-cols-3 gap-[var(--gapmobile-xs)] lg:gap-[var(--gapweb-xs)]">
+          <div class="md:grid lg:grid-cols-3 gap-[var(--gapmobile-xs)] md:gap-[var(--gapweb-xs)]">
             <ContactInfo label="Telefon" tekst="+45 12345678" link="tel:+4512345678" />
             <ContactInfo label="Email" tekst="Hi@crying.wine" link="mailto:Hi@crying.wine" />
             <ContactInfo label="Instagram" tekst="Cryingwinecopenhagen" link="https://www.instagram.com/cryingwinecopenhagen" />
           </div>
         </div>
-        <div class="relative hidden w-full overflow-hidden pt-[50%] lg:block">
+        <div class="relative hidden w-full overflow-hidden pt-[50%] xl:block">
           <img src="/img/ContactImg.webp" alt="billede stemning" class="absolute inset-0 h-full w-full object-cover object-center" />
         </div>
       </div>
