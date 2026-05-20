@@ -7,6 +7,8 @@ import CardButton from "../../components/CardButton.astro";
 import Favorites from "../../components/Favorites.astro";
 import TasteBox from "../../components/TasteBox.astro";
 
+// TypeScript type til at definere hvordan et produktobjekt skal se ud. Det gør koden mere sikker og hjælper med at undgå fejl, fordi TypeScript kan kontrollere datatyperne.
+// Hvis ikke disse informationer er der, kan den ikke finde ud af at hente de rigtige informationer.
 type Product = {
   id: string | number;
   Productname?: string;
@@ -28,27 +30,42 @@ type Product = {
   Food_text4?: string;
 };
 
+// Astro funktion der bruges til dynamiske sider.
+// Den fortæller Astro hvilke sider der skal genereres ved build.
 export async function getStaticPaths() {
+  // URL til vores Supabase database/API
   const SUPABASE_URL = "https://lbkrfecnofyqzkuhuins.supabase.co";
+  // Public API key til at hente data fra databasen
   const SUPABASE_KEY = "sb_publishable_y5b_SwFaDlD8jvcpEA-GiQ_nP-3VCkg";
 
+  // fetch() sender et HTTP request til Supabase
+  // await bruges fordi det tager tid at hente data fra en server
+  // ${SUPABASE_URL} = indsætter database URL'en
+  // /rest/v1/ = Supabase REST API endpoint, en webadresse man sender requests til for at hente eller arbejde med data fra databasen.
   const response = await fetch(`${SUPABASE_URL}/rest/v1/CryingWine?select=*`, {
+    // GET betyder at vi kun henter data
     method: "GET",
     headers: {
+      // API nøgle bruges til adgang til databasen
       apikey: SUPABASE_KEY,
+      // Authorization bruges til at verificere adgang
       Authorization: `Bearer ${SUPABASE_KEY}`,
+      // Vi fortæller at vi arbejder med JSON data
       "Content-Type": "application/json",
     },
   });
 
   const products: Product[] = (await response.json()) ?? [];
 
+  // map() gennemgår alle produkter og laver dynamiske sider
   return products.map((product) => ({
     params: { id: String(product.id) },
+    // props sender produktdata videre til siden
     props: { product },
   }));
 }
 
+// Linjen henter product data fra Astro.props. Samtidig bruger jeg TypeScript til at fortælle at 'product' skal følge Product typen, så jeg får type-sikkerhed og færre fejl i koden.
 const { product } = Astro.props as { product: Product };
 
 const { quantity = 1 } = Astro.props;
