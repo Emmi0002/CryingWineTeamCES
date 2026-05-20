@@ -4,10 +4,12 @@ const { href = "#", target = "_self", variant = "textlink", size = "default", st
 
 //Definer den styling (Tailwind classes), der gør sig gældende for de forskellige varianter
 const variantClasses = {
-  textlink: " text-primary-content hover:text-accent",
-  textlinkBlack: " text-secondary-content bg-transparent hover:text-accent hover:bg-transparent",
-  primary: "inline-block font-bold px-8 py-4 bg-primary text-primary-content hover:bg-accent",
-  secondary: "inline-block font-bold border-2 px-8 py-4 border-primary text-primary bg-neutral hover:text-accent hover:border-accent" /* border-secondary-500 */,
+  textlink: " text-primary-content hover:text-accent hover:scale-[1.01]",
+  textlinkBlack: " text-secondary-content bg-transparent hover:text-accent hover:bg-transparent hover:scale-[1.01] ",
+  primary:
+    "inline-block font-bold px-8 py-4 bg-primary text-primary-content shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.005] hover:shadow-lg hover:ring-1 hover:ring-primary-content hover:bg-accent hover:text-priary-content hover:border-accent",
+  secondary:
+    "inline-block font-bold border-2 px-8 py-4 border-primary text-primary bg-neutral shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.005] hover:shadow-lg  hover:text-accent hover:border-accent" /* border-secondary-500 */,
 };
 
 //Definer den styling (Tailwind classes), der gør sig gældende for de forskelligeog størrelser.
