@@ -5,19 +5,32 @@ import ProductCard from "../components/ProductCard.astro";
 import Button from "../components/Button.astro";
 import Text from "../components/Text.astro";
 
+// URL til vores Supabase projekt/database
 const SUPABASE_URL = "https://lbkrfecnofyqzkuhuins.supabase.co";
-
+// Public API nøgle som giver adgang til databasen
 const SUPABASE_KEY = "sb_publishable_y5b_SwFaDlD8jvcpEA-GiQ_nP-3VCkg";
 
+// fetch() sender et HTTP request til Supabase
+// await bruges fordi det tager tid at hente data fra en server
+// ${SUPABASE_URL} = indsætter database URL'en
+// /rest/v1/ = Supabase REST API endpoint, en webadresse man sender requests til for at hente eller arbejde med data fra databasen.
 const response = await fetch(`${SUPABASE_URL}/rest/v1/CryingWine?select=*`, {
+  // GET betyder at vi kun henter data
   method: "GET",
   headers: {
+    // API nøgle bruges til adgang til databasen
     apikey: SUPABASE_KEY,
+    // Authorization bruges til at verificere adgang
     Authorization: `Bearer ${SUPABASE_KEY}`,
+    // Vi fortæller at vi arbejder med JSON data
     "Content-Type": "application/json",
   },
 });
 
+// response.json() omdanner JSON data fra serveren til JavaScript objekter vi kan arbejde med
+// await bruges fordi omdannelsen tager tid
+// ?? [] er en fallback, altså hvis koden ikke går igennem
+// Hvis response.json() returnerer null eller undefined bliver CryingWine i stedet et tomt array []
 const CryingWine = (await response.json()) ?? [];
 
 console.log(CryingWine);
@@ -25,21 +38,23 @@ console.log(CryingWine);
 
 <MainLayout title="På hylden">
   <main class="mx-[var(--margin-mobile)] md:mx-[var(--margin-web)] my-40 flex flex-col gap-[var(--gapmobile-xl)] md:gap-[var(--gapweb-xl)]">
-    <Heading htmlheading="h1" size="large">Hele vinhylden</Heading>
-    <div class="flex gap-[var(--gapmobile-s)] lg:gap-[var(--gapweb-s)] carousel">
-      <Button variant="secondary" form="pill" type="button" data-filter="all"><Text tekstype="label" weight="bold" color="primary">ALLE</Text></Button>
-      <Button variant="secondary" form="pill" type="button" data-filter="white"><Text tekstype="label" weight="bold" color="primary">HVID</Text></Button>
-      <Button variant="secondary" form="pill" type="button" data-filter="orange"><Text tekstype="label" weight="bold" color="primary">ORANGE</Text></Button>
-      <Button variant="secondary" form="pill" type="button" data-filter="rose"><Text tekstype="label" weight="bold" color="primary">ROSÈ</Text></Button>
-      <Button variant="secondary" form="pill" type="button" data-filter="red"><Text tekstype="label" weight="bold" color="primary">RØD</Text></Button>
-      <Button variant="secondary" form="pill" type="button" data-filter="bubbles"><Text tekstype="label" weight="bold" color="primary">BOBLER</Text></Button>
-      <Button variant="secondary" form="pill" type="button" data-filter="natur"><Text tekstype="label" weight="bold" color="primary">NATUR</Text></Button>
-      <Button variant="secondary" form="pill" type="button" data-filter="alkoholfri"><Text tekstype="label" weight="bold" color="primary">ALKOHOLFRI</Text></Button>
-      <Button variant="secondary" form="pill" href="/smagskasser"><Text tekstype="label" weight="bold" color="primary">SMAGSKASSER</Text></Button>
-      <Button variant="secondary" form="pill" href="/merch"><Text tekstype="label" weight="bold" color="primary">MERCH</Text></Button>
+    <div class="flex flex-col md:gap-[var(--gapweb-s)]">
+      <Heading htmlheading="h1" size="large">Hele vinhylden</Heading>
+      <div class="flex gap-[var(--gapmobile-s)] lg:gap-[var(--gapweb-s)] carousel">
+        <Button variant="secondary" form="pill" type="button" data-filter="all"><Text tekstype="label" weight="bold" color="primary">ALLE</Text></Button>
+        <Button variant="secondary" form="pill" type="button" data-filter="white"><Text tekstype="label" weight="bold" color="primary">HVID</Text></Button>
+        <Button variant="secondary" form="pill" type="button" data-filter="orange"><Text tekstype="label" weight="bold" color="primary">ORANGE</Text></Button>
+        <Button variant="secondary" form="pill" type="button" data-filter="rose"><Text tekstype="label" weight="bold" color="primary">ROSÈ</Text></Button>
+        <Button variant="secondary" form="pill" type="button" data-filter="red"><Text tekstype="label" weight="bold" color="primary">RØD</Text></Button>
+        <Button variant="secondary" form="pill" type="button" data-filter="bubbles"><Text tekstype="label" weight="bold" color="primary">BOBLER</Text></Button>
+        <Button variant="secondary" form="pill" type="button" data-filter="natur"><Text tekstype="label" weight="bold" color="primary">NATUR</Text></Button>
+        <Button variant="secondary" form="pill" type="button" data-filter="alkoholfri"><Text tekstype="label" weight="bold" color="primary">ALKOHOLFRI</Text></Button>
+        <Button variant="secondary" form="pill" href="/smagskasser"><Text tekstype="label" weight="bold" color="primary">SMAGSKASSER</Text></Button>
+        <Button variant="secondary" form="pill" href="/merch"><Text tekstype="label" weight="bold" color="primary">MERCH</Text></Button>
+      </div>
     </div>
     <div
-      class="grid grid-cols-[repeat(auto-fit,minmax(160px,175px))] lg:grid-cols-[repeat(auto-fit,minmax(250px,290px))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center md:justify-start"
+      class="grid grid-cols-[repeat(auto-fit,minmax(160px,175px))] lg:grid-cols-[repeat(auto-fit,minmax(250px,290px))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center"
       data-wine-grid
     >
       {
