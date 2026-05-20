@@ -29,19 +29,15 @@ import Link from "./Link.astro";
     <Text teksttype="caption" weight="caption" color="secondary">Følg med her</Text>
   </div>
 
-  <div class="flex lg:flex-row flex-col gap-[var(--gapmobile-2xl)] lg:gap-0 justify-between lg:pl-[var(--gapweb-xl)] pl-[var(--gapmobile-l)] lg:pr-100 lg:-mt-10 relative z-10 mb-[var(--gapmobile-l)] lg:mb-[var(--gapweb-l)]">
+  <div
+    class="flex lg:flex-row flex-col gap-[var(--gapmobile-2xl)] lg:gap-0 justify-between lg:pl-[var(--gapweb-xl)] pl-[var(--gapmobile-l)] lg:pr-100 lg:-mt-10 relative z-10 mb-[var(--gapmobile-l)] lg:mb-[var(--gapweb-l)]"
+  >
     <div class="flex flex-col lg:gap-[var(--gapweb-xxs)]">
-      <Text teksttype="footnote" weight="bold" color="negative">Vin med posten</Text>
+      <Text teksttype="footnote" weight="bold" color="negative" stylingclasses="mb-2 lg:mb-1">Vin med posten</Text>
       <div class="flex flex-col gap-0">
         <div class="join">
-          <label class="input validator join-item px-6 py-5">
-            <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
-                <rect width="40" height="20" x="4" y="4" rx="2"></rect>
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-              </g>
-            </svg>
-            <input type="email" placeholder="Din Email" class="w-full pl-0 text-black text-lg" required />
+          <label class="input validator join-item pr-6 py-5">
+            <input type="email" placeholder="Din e-mail" class="w-full pl-0 text-grey text-s m-0" required />
           </label>
           <button class="btn btn-neutral join-item px-6 py-5">Tilmeld</button>
         </div>
